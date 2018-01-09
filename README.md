@@ -10,41 +10,42 @@ Create a simple scheduling system that manages doctor availabilities and allows 
 
 ## Data Model
 
-availability
-  doctorId: (int)
-  data : (date)
-  duration: (int)
-  status: (free/busy) (string)
 
-appointment
-	patientId: (id)
-	availabilityId: (id)
+* availability
+** doctorId: (int)
+** data : (date)
+** duration: (int)
+** status: (free/busy) (string)
 
-patient
-	id: (int)
-	name:(string)
+* appointment
+** patientId: (id)
+** availabilityId: (id)
 
-doctor
-	id: (int)
-	name:(string)
+* patient
+** id: (int)
+** name:(string)
+
+* doctor
+** id: (int)
+** name:(string)
 
 
 ## APIs
 
-`name: createAvailability
-description: creates an open spot in the schedule that patients can book
-params: doctor name (string), availability datetime (date)
-output: success / failure message`
+* name: createAvailability
+* description: creates an open spot in the schedule that patients can book
+* params: doctor name (string), availability datetime (date)
+* output: success / failure message
 
-`name: bookAvailability
-description: marks an availability as taken
-params: patient name (string), doctor name (string), datetime(date), duration(int)
-output: success / failure message`
+* name: bookAvailability
+* description: marks an availability as taken
+* params: patient name (string), doctor name (string), datetime(date), duration(int)
+* output: success / failure message
 
-`method name: listAvailabilities
-description: show all availabilities for a doctor for specific dates
-params: doctor name(string), datetime(optional) (date) 
-output: list of availabilities`
+* method name: listAvailabilities
+* description: show all availabilities for a doctor for specific dates
+* params: doctor name(string), datetime(optional) (date) 
+* output: list of availabilities
 
 ## Deliverables
 
