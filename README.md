@@ -2,11 +2,11 @@
 
 ## Problem Definition
 
-A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visiualizing all availabilities of a doctor for specific dates. 
+A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visiualizing all visualizing of a doctor for specific dates. 
 
 ## Interview Task
 
-Create a simple schedule system that manages doctor availabilities and allows patients to book appointments.
+Create a simple scheduling system that manages doctor availabilities and allows patients to book appointments.
 
 ## Data Model
 
@@ -29,7 +29,7 @@ doctor
 	name:(string)
 
 
-Your program should expose the following apis.
+## APIs
 
 name: createAvailability
 description: creates an open spot in the schedule that patients can book
