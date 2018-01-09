@@ -2,7 +2,7 @@
 
 ## Problem Definition
 
-A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visiualizing all visualizing of a doctor for specific dates. 
+A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visualizing all of the available time for a doctor for specific dates. 
 
 ## Interview Task
 
@@ -10,40 +10,41 @@ Create a simple scheduling system that manages doctor availabilities and allows 
 
 ## Data Model
 
-* availability
+* calendar
+  + id: (int) 
   + doctorId: (int)
-  + data : (date)
+  + date: (date)
   + duration: (int)
   + status: (free/busy) (string)
 
 * appointment
-  + patientId: (id)
-  + availabilityId: (id)
+  + patientId: (int)
+  + calendarId: (int)
 
 * patient
   + id: (int)  
-  + name:(string)
+  + name: (string)
 
 * doctor
   + id: (int)
-  + name:(string)
+  + name: (string)
 
 
 ## APIs
-* createAvailability
-  + description: creates an open spot in the schedule that patients can book
-  + params: doctor name (string), availability datetime (date)
+* createOpenCalendarSpot
+  + description: creates an open spot in the calendar that patients can book
+  + params: doctorId (int), datetime (date)
   + output: success / failure message
 
-* bookAvailability
-  + description: marks an availability as taken
-  + params: patient name (string), doctor name (string), datetime(date), duration(int)
+* bookCalendarSpot
+  + description: marks an calendar as taken, creates an appointment
+  + params: patientId (id), doctorId (id), datetime (date), duration (int)
   + output: success / failure message
 
-* listAvailabilities
-  + description: show all availabilities for a doctor for specific dates
-  + params: doctor name(string), datetime(optional) (date) 
-  + output: list of availabilities
+* listOpenCalendarSpots
+  + description: show all open calendars spots for a doctor for specific dates
+  + params: doctorId (id), datetime (optional) (date) 
+  + output: list of open calendar sports
 
 ## Deliverables
 
