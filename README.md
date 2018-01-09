@@ -31,22 +31,20 @@ doctor
 
 ## APIs
 
-name: createAvailability
+`name: createAvailability
 description: creates an open spot in the schedule that patients can book
 params: doctor name (string), availability datetime (date)
-output: success / failure message
+output: success / failure message`
 
-name: bookAvailability
+`name: bookAvailability
 description: marks an availability as taken
 params: patient name (string), doctor name (string), datetime(date), duration(int)
-output: success / failure message
+output: success / failure message`
 
-method name: listAvailabilities
+`method name: listAvailabilities
 description: show all availabilities for a doctor for specific dates
 params: doctor name(string), datetime(optional) (date) 
-output: list of availabilities
-
-
+output: list of availabilities`
 
 ## Deliverables
 
