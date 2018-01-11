@@ -6,45 +6,24 @@ A busy hospital has a list of dates that a doctor is available to see patients. 
 
 ## Interview Task
 
-Create a simple scheduling system that manages doctor availabilities and allows patients to book appointments.
+Create a REST API that enables a simple scheduling system that manages doctor availabilities and allows patients to book appointments.
 
 ## Data Model
 
-* calendar
-  + id: (int) 
-  + doctorId: (int)
-  + date: (date)
-  + duration: (int)
-  + status: (free/busy) (string)
+Define a set of data models that include:
 
-* appointment
-  + patientId: (int)
-  + calendarId: (int)
+* a way track assign booked appointments
+* a way to track patients
+* a way to track doctors 
+* a way to track a doctor's working hours and days
 
-* patient
-  + id: (int)  
-  + name: (string)
+## REST API
 
-* doctor
-  + id: (int)
-  + name: (string)
+Implement the following functionality:
 
-
-## APIs
-* createOpenCalendarSpot
-  + description: creates an open spot in the calendar that patients can book
-  + params: doctorId (int), datetime (date)
-  + output: success / failure message
-
-* bookCalendarSpot
-  + description: marks an calendar as taken, creates an appointment
-  + params: patientId (id), doctorId (id), datetime (date), duration (int)
-  + output: success / failure message
-
-* listOpenCalendarSpots
-  + description: show all open calendars spots for a doctor for specific dates
-  + params: doctorId (id), datetime (optional) (date) 
-  + output: list of open calendar sports
+* Find a doctor's working hours
+* Book an doctor opening
+* Create and update the list of doctor's working hours
 
 ## Deliverables
 
