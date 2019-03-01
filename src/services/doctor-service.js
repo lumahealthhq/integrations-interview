@@ -20,7 +20,7 @@ const createDoctorSchedules = async (doctorId, schedules) => {
     await Schedule.sync();
     const schedulePromises = [];
     if (!doctor) {
-        throw boom.notFound("Doctor not found with id: "+doctorId);
+        throw boom.notFound("Doctor not found with id: " + doctorId);
     }
 
     const existingSchedules = await doctor.getSchedules();
@@ -38,7 +38,7 @@ const updateDoctorSchedules = async (doctorId, schedules) => {
     const doctor = await Doctor.findByPk(doctorId);
     const schedulePromises = [];
     if (!doctor) {
-        throw boom.notFound("Doctor not found with id: "+doctorId);
+        throw boom.notFound("Doctor not found with id: " + doctorId);
     }
     sequelize
         .transaction((t) => {
@@ -54,7 +54,7 @@ const updateDoctorSchedules = async (doctorId, schedules) => {
 const getDoctorSchedules = async (doctorId) => {
     const doctor = await Doctor.findByPk(doctorId);
     if (!doctor) {
-        throw boom.notFound("Doctor not found with id: "+doctorId);
+        throw boom.notFound("Doctor not found with id: " + doctorId);
     }
 
     return doctor.getSchedules();
@@ -70,13 +70,25 @@ const getBookedAppointments = async (doctorId) => {
 const isDoctorAlreadyBooked = async (doctor, bookingDetails) => {
     const appointments = await doctor.getAppointments({
         where: {
-            [Op.gte]: bookingDetails.start,
-            [Op.lte]: bookingDetails.end
+            startAt: {
+                [Op.gte]: bookingDetails.startAt
+            },
+            endAt: {
+                [Op.lte]: bookingDetails.endAt
+            }
         }
     });
 
     return appointments.length > 0;
 };
 
-export { createDoctor, updateDoctor, createDoctorSchedules, updateDoctorSchedules, getDoctorSchedules, isDoctorAlreadyBooked, getBookedAppointments };
+export {
+    createDoctor,
+    updateDoctor,
+    createDoctorSchedules,
+    updateDoctorSchedules,
+    getDoctorSchedules,
+    isDoctorAlreadyBooked,
+    getBookedAppointments
+};
 

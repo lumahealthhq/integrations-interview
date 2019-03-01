@@ -1,5 +1,7 @@
+import {Sequelize} from 'sequelize';
 import Patient from '../models/patient';
 
+const Op = Sequelize.Op;
 const createPatient = async (patient) => {
     await Patient.sync();
     return Patient.create(patient);
@@ -18,10 +20,16 @@ const getBookedAppointments = async (patientId) => {
 const isPatientAlreadyBooked = async (patient, bookingDetails) => {
     const appointments = await patient.getAppointments({
         where: {
-            [Op.gte]: bookingDetails.start,
-            [Op.lte]: bookingDetails.end
+            startAt: {
+                [Op.gte]: bookingDetails.startAt
+            },
+            endAt: {
+                [Op.lte]: bookingDetails.endAt
+            }
         }
     });
+
+    // console.info("appointments:", appointments, appointments.length > 0);
 
     return appointments.length > 0;
 };

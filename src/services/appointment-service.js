@@ -17,26 +17,28 @@ const bookAppointment = async (doctorId, patientId, bookingDetails) => {
     if (!doctor) {
         throw boom.notFound("Doctor not found with id: " + doctorId);
     }
-
-    if (patientService.isPatientAlreadyBooked(patient, bookingDetails)) {
+    const isPatientAlreadyBooked = await patientService.isPatientAlreadyBooked(patient, bookingDetails);
+    if (isPatientAlreadyBooked) {
         throw boom.conflict("Patient is already booked during this period");
     }
-    if (doctorService.isDoctorAlreadyBooked(doctor, bookingDetails)) {
+
+    const isDoctorAlreadyBooked = await doctorService.isDoctorAlreadyBooked(doctor, bookingDetails);
+    if (isDoctorAlreadyBooked) {
         throw boom.conflict("Doctor is already booked during this period");
     }
 
-    sequelize.transaction().then((t) => {
+    return sequelize.transaction().then((t) => {
         return Appointment.create(bookingDetails, {transaction: t})
             .then(appointment => {
                 return doctor.addAppointment(appointment, {transaction: t})
                     .then(() => {
-                        return patient.addAppointment(appointment, {transaction: t});
+                        return patient.addAppointment(appointment, {transaction: t}).then(() => {
+                            t.commit();
+                        });
                     });
             });
-    }).then((res) => {
-        console.info("Booked appointment successfully", res);
-    }).catch(e => {
-        throw e;
+    }).then(() => {
+        console.info("Booked appointment successfully");
     });
 };
 

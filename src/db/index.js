@@ -6,4 +6,6 @@ const sequelize = new Sequelize('luma', 'root', 'devmysql', {
   dialect: 'mysql'
 });
 
+sequelize.sync();
+
 export default sequelize;
