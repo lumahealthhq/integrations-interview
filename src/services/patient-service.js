@@ -24,10 +24,10 @@ const isPatientAlreadyBooked = async (patient, bookingDetails) => {
     const appointments = await patient.getAppointments({
         where: {
             startAt: {
-                [Op.gte]: bookingDetails.startAt
+                [Op.lte]: bookingDetails.startAt
             },
             endAt: {
-                [Op.lte]: bookingDetails.endAt
+                [Op.gte]: bookingDetails.endAt
             }
         }
     });

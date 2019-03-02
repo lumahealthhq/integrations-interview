@@ -8,7 +8,7 @@ const createPatient = async (req, res, next) => {
 
         res.sendStatus(201);
     } catch (e) {
-        console.error("createPatient:", e);
+        console.error("createPatient:", e.message);
         return next(e);
     }
 };
@@ -18,7 +18,7 @@ const getPatients = async (req, res, next) => {
 
         res.json(patients);
     } catch (e) {
-        console.error("getPatients:", e);
+        console.error("getPatients:", e.message);
         return next(e);
     }
 };

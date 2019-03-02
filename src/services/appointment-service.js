@@ -32,7 +32,7 @@ const bookAppointment = async (doctorId, patientId, bookingDetails) => {
 
     // Check if this booking details is within Doctor's available schedule
     const isDoctorAvailable = await doctorService.isDoctorAvailable(doctor, bookingDetails);
-    if (isDoctorAvailable) {
+    if (!isDoctorAvailable) {
         throw boom.notAcceptable("Doctor not available during this period");
     }
 

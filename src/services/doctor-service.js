@@ -75,10 +75,10 @@ const isDoctorAlreadyBooked = async (doctor, bookingDetails) => {
     const appointments = await doctor.getAppointments({
         where: {
             startAt: {
-                [Op.gte]: bookingDetails.startAt
+                [Op.lte]: bookingDetails.startAt
             },
             endAt: {
-                [Op.lte]: bookingDetails.endAt
+                [Op.gte]: bookingDetails.endAt
             }
         }
     });
@@ -90,14 +90,14 @@ const isDoctorAvailable = async (doctor, bookingDetails) => {
     const schedules = await doctor.getSchedules({
         where: {
             availableFrom: {
-                [Op.gte]: bookingDetails.startAt
+                [Op.lte]: bookingDetails.startAt
             },
             availableTo: {
-                [Op.lte]: bookingDetails.endAt
+                [Op.gte]: bookingDetails.endAt
             }
         }
     });
-
+    console.info("::schedules", schedules);
     return schedules.length > 0;
 };
 

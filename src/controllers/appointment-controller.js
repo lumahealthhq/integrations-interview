@@ -9,7 +9,7 @@ const bookAppointment = async (req, res, next) => {
 
         res.sendStatus(201);
     } catch (e) {
-        console.error("bookAppointment:", e);
+        console.error("bookAppointment:", e.message);
         return next(e);
     }
 };

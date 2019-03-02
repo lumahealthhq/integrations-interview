@@ -8,7 +8,7 @@ const createDoctor = async (req, res, next) => {
 
         res.sendStatus(201);
     } catch (e) {
-        console.error("createDoctor:", e);
+        console.error("createDoctor:", e.message);
         return next(e);
     }
 };
@@ -22,7 +22,7 @@ const updateDoctor = async (req, res, next) => {
 
         res.sendStatus(204);
     } catch (e) {
-        console.error("updateDoctor:", e);
+        console.error("updateDoctor:", e.message);
         return next(e);
     }
 };
@@ -37,7 +37,7 @@ const createDoctorSchedules = async (req, res, next) => {
 
         res.sendStatus(201);
     } catch (e) {
-        console.error("createDoctorSchedules:", e);
+        console.error("createDoctorSchedules:", e.message);
         return next(e);
     }
 };
@@ -52,7 +52,7 @@ const updateDoctorSchedules = async (req, res, next) => {
 
         res.sendStatus(204);
     } catch (e) {
-        console.error("updateDoctorSchedules:", e);
+        console.error("updateDoctorSchedules:", e.message);
         return next(e);
     }
 };
@@ -66,7 +66,7 @@ const getDoctorSchedules = async (req, res, next) => {
 
         res.status(200).json(schedules);
     } catch (e) {
-        console.error("getDoctorSchedules:", e);
+        console.error("getDoctorSchedules:", e.message);
         return next(e);
     }
 };
