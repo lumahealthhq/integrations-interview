@@ -84,14 +84,12 @@ describe("API Integration test", () => {
         });
 
         describe("/POST /doctor/:id/schedule", () => {
-            const schedules = [];
-            const now = moment(new Date());
-            schedules.push({
-                availableFrom: now.format(DATETIME_FORMAT),
-                availableTo: now.add(3, 'h').format(DATETIME_FORMAT)
-            });
-
             it("should create a Doctor's list of schedules", (done) => {
+                const schedules = [];
+                schedules.push({
+                    availableFrom: moment(),
+                    availableTo: moment().add(3, 'h')
+                });
                 chai.request(app)
                     .post("/api/doctor/1/schedule")
                     .send(schedules)
@@ -103,14 +101,15 @@ describe("API Integration test", () => {
         });
 
         describe("/PUT /doctor/:id/schedule", () => {
-            const schedules = [];
-            const now = moment(new Date());
-            schedules.push({
-                availableFrom: now.add(3, 'h').format(DATETIME_FORMAT),
-                availableTo: now.add(6, 'h').format(DATETIME_FORMAT)
-            });
-
             it("should update a Doctor's list of schedules", (done) => {
+                const schedules = [];
+                schedules.push({
+                    availableFrom: moment(),
+                    availableTo: moment().add(6, 'h')
+                });
+
+                console.info(schedules);
+
                 chai.request(app)
                     .put("/api/doctor/1/schedule")
                     .send(schedules)
@@ -135,18 +134,35 @@ describe("API Integration test", () => {
 
     describe("Appointments", () => {
         describe("/POST /appointment/patient/:patientId/doctor/:doctorId", () => {
-            const now = moment();
-            const appointment = {
-                startAt: now.add(8, 'h').format(DATETIME_FORMAT),
-                endAt: now.add(9, 'h').format(DATETIME_FORMAT)
-            };
+            it("should create a patient appointment", (done) => {
+                const appointment = {
+                    startAt: moment().add(2, 'h'),
+                    endAt: moment().add(3, 'h')
+                };
 
-            it("should create an appointment", (done) => {
+                console.info("::appointment", appointment);
+
                 chai.request(app)
                     .post("/api/appointment/patient/1/doctor/1")
                     .send(appointment)
                     .then((res) => {
                         res.should.have.status(201);
+                        done();
+                    });
+            });
+
+            it("should return doctor not available(406 - Not Acceptable)", (done) => {
+                const appointment = {
+                    startAt: moment().add(8, 'h'),
+                    endAt: moment().add(9, 'h')
+                };
+
+                console.info('::appointment', appointment);
+                chai.request(app)
+                    .post("/api/appointment/patient/1/doctor/1")
+                    .send(appointment)
+                    .then((res) => {
+                        res.should.have.status(406);
                         done();
                     });
             });
