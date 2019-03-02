@@ -3,13 +3,16 @@ import Patient from '../models/patient';
 
 const Op = Sequelize.Op;
 const createPatient = async (patient) => {
-    await Patient.sync();
     return Patient.create(patient);
 };
 
 const updatePatient = async (patientId, dataToBeUpdated) => {
     const patient = await Patient.findByPk(patientId);
     return patient.update(dataToBeUpdated);
+};
+
+const getPatients = async () => {
+    return Patient.findAll();
 };
 
 const getBookedAppointments = async (patientId) => {
@@ -29,10 +32,8 @@ const isPatientAlreadyBooked = async (patient, bookingDetails) => {
         }
     });
 
-    // console.info("appointments:", appointments, appointments.length > 0);
-
     return appointments.length > 0;
 };
 
 
-export { createPatient, updatePatient, getBookedAppointments, isPatientAlreadyBooked};
+export {createPatient, updatePatient, getPatients, getBookedAppointments, isPatientAlreadyBooked};

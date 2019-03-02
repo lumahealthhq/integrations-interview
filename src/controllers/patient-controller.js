@@ -12,5 +12,15 @@ const createPatient = async (req, res, next) => {
         return next(e);
     }
 };
+const getPatients = async (req, res, next) => {
+    try {
+        const patients = await patientService.getPatients();
 
-export { createPatient };
+        res.json(patients);
+    } catch (e) {
+        console.error("getPatients:", e);
+        return next(e);
+    }
+};
+
+export {createPatient, getPatients};
