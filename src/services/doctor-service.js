@@ -24,7 +24,7 @@ const createDoctorSchedules = async (doctorId, schedules) => {
     }
 
     const existingSchedules = await doctor.getSchedules();
-    sequelize.transaction((t) => {
+    return sequelize.transaction((t) => {
         schedules.forEach((schedule) => {
             const schedulePromise = Schedule.create(schedule, {transaction: t});
             schedulePromises.push(schedulePromise);
@@ -40,15 +40,16 @@ const updateDoctorSchedules = async (doctorId, schedules) => {
     if (!doctor) {
         throw boom.notFound("Doctor not found with id: " + doctorId);
     }
-    sequelize
+    return sequelize
         .transaction((t) => {
             schedules.forEach((schedule) => {
                 const schedulePromise = Schedule.create(schedule, {transaction: t});
                 schedulePromises.push(schedulePromise);
             });
-            return Promise.all(schedulePromises);
-        })
-        .then(res => doctor.setSchedules(res));
+            return Promise.all(schedulePromises).then(res => doctor.setSchedules(res).then(() => {
+                t.commit();
+            }));
+        });
 };
 
 const getDoctorSchedules = async (doctorId) => {
@@ -82,6 +83,21 @@ const isDoctorAlreadyBooked = async (doctor, bookingDetails) => {
     return appointments.length > 0;
 };
 
+const isDoctorAvailable = async (doctor, bookingDetails) => {
+    const schedules = await doctor.getSchedules({
+        where: {
+            availableFrom: {
+                [Op.gte]: bookingDetails.startAt
+            },
+            availableTo: {
+                [Op.lte]: bookingDetails.endAt
+            }
+        }
+    });
+
+    return schedules.length > 0;
+};
+
 export {
     createDoctor,
     updateDoctor,
@@ -89,6 +105,7 @@ export {
     updateDoctorSchedules,
     getDoctorSchedules,
     isDoctorAlreadyBooked,
+    isDoctorAvailable,
     getBookedAppointments
 };
 

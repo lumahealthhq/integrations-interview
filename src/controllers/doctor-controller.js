@@ -1,4 +1,3 @@
-import moment from 'moment';
 import * as doctorService from "../services/doctor-service";
 
 const createDoctor = async (req, res, next) => {
@@ -72,4 +71,4 @@ const getDoctorSchedules = async (req, res, next) => {
     }
 };
 
-export { createDoctor, updateDoctor, createDoctorSchedules, updateDoctorSchedules, getDoctorSchedules };
+export {createDoctor, updateDoctor, createDoctorSchedules, updateDoctorSchedules, getDoctorSchedules};
