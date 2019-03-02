@@ -37,20 +37,14 @@ const bookAppointment = async (doctorId, patientId, bookingDetails) => {
     }
 
     // Start a transaction for booking the appointment
-    return sequelize.transaction().then((t) => {
-        return Appointment.create(bookingDetails, {transaction: t})
+    return sequelize.transaction((transaction) => {
+        return Appointment.create(bookingDetails, {transaction})
             .then(appointment => {
-                return doctor.addAppointment(appointment, {transaction: t})
+                return doctor.addAppointment(appointment, {transaction})
                     .then(() => {
-                        return patient.addAppointment(appointment, {transaction: t}).then(() => {
-                            // Everything went fine commit
-                            t.commit();
-                            return appointment;
-                        });
+                        return patient.addAppointment(appointment, {transaction});
                     });
             });
-    }).then((appointment) => {
-        console.info("bookAppointment: Booked appointment successfully with id:", appointment.id);
     });
 };
 

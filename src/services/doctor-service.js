@@ -23,14 +23,16 @@ const createDoctorSchedules = async (doctorId, schedules) => {
         throw boom.notFound("Doctor not found with id: " + doctorId);
     }
 
-    const existingSchedules = await doctor.getSchedules();
-    return sequelize.transaction((t) => {
+    return sequelize.transaction((transaction) => {
         schedules.forEach((schedule) => {
-            const schedulePromise = Schedule.create(schedule, {transaction: t});
+            const schedulePromise = Schedule.create(schedule, {transaction});
             schedulePromises.push(schedulePromise);
         });
-        return Promise.all(schedulePromises);
-    }).then(res => doctor.addSchedules([...existingSchedules, ...res]));
+        return Promise.all(schedulePromises)
+            .then(createdSchedules => {
+                return doctor.addSchedules(createdSchedules, {transaction});
+            });
+    });
 };
 
 // on update I am assuming that it is updating(replaced on its entirety) with a updated  list of schedules
@@ -40,16 +42,17 @@ const updateDoctorSchedules = async (doctorId, schedules) => {
     if (!doctor) {
         throw boom.notFound("Doctor not found with id: " + doctorId);
     }
-    return sequelize
-        .transaction((t) => {
-            schedules.forEach((schedule) => {
-                const schedulePromise = Schedule.create(schedule, {transaction: t});
-                schedulePromises.push(schedulePromise);
-            });
-            return Promise.all(schedulePromises).then(res => doctor.setSchedules(res).then(() => {
-                t.commit();
-            }));
+
+    return sequelize.transaction((transaction) => {
+        schedules.forEach((schedule) => {
+            const schedulePromise = Schedule.create(schedule, {transaction});
+            schedulePromises.push(schedulePromise);
         });
+        return Promise.all(schedulePromises)
+            .then(createdSchedules => {
+                return doctor.setSchedules(createdSchedules, {transaction});
+            });
+    });
 };
 
 const getDoctorSchedules = async (doctorId) => {
