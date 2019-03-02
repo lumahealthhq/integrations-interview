@@ -1,0 +1,14 @@
+{
+  "db": {
+    "host": {
+      "doc": "Database host name/IP",
+      "format": "String",
+      "default": "localhost"
+    },
+    "name": {
+      "doc": "Database name",
+      "format": "String",
+      "default": "luma"
+    }
+  }
+}
