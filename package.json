@@ -4,7 +4,7 @@
   "description": "Luma engineering assignment",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "NODE_ENV=test mocha --require @babel/polyfill --require @babel/register --recursive 'src/test/**/*.js'",
     "dev": "backpack"
   },
   "author": "Devajit Asem",
@@ -21,6 +21,13 @@
     "sequelize": "^4.42.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/register": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^4.2.1",
     "mocha": "^6.0.2"
   }
 }
