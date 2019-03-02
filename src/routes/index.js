@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import {Router} from 'express';
 import * as patientController from "../controllers/patient-controller";
 import * as doctorController from "../controllers/doctor-controller";
 import * as appointmentController from "../controllers/appointment-controller";
@@ -7,10 +7,16 @@ const router = Router();
 
 // Patients' routes
 router.post('/patient', patientController.createPatient);
+router.get('/patient', patientController.getPatients);
 // router.put('/patient', createPatient);
 
 // Appointment routes
 router.post('/appointment/patient/:patientId/doctor/:doctorId', appointmentController.bookAppointment);
+
+// Schedule routes
+// router.post('/schedule/doctor/:doctorId', scheduleController.createDoctorSchedules);
+// router.put('/schedule/doctor/:doctorId', scheduleController.updateDoctorSchedules);
+// router.get('/schedule/doctor/:doctorId', scheduleController.createDoctorSchedules);
 
 // Doctors' routes
 router.post('/doctor', doctorController.createDoctor);
