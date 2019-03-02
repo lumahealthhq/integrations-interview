@@ -1,0 +1,28 @@
+{
+  "name": "luma-eng-interview",
+  "version": "1.0.0",
+  "description": "Luma Health coding assignment",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohan8594/luma-eng-interview.git"
+  },
+  "author": "Rohan Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohan8594/luma-eng-interview/issues"
+  },
+  "homepage": "https://github.com/rohan8594/luma-eng-interview#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.16"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
