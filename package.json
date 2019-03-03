@@ -6,7 +6,8 @@
   "scripts": {
     "test": "NODE_ENV=test mocha --require @babel/polyfill --require @babel/register --recursive 'src/test/**/*.js'",
     "dev": "backpack",
-    "build": "backpack build"
+    "build": "backpack build",
+    "start": "backpack build && node ./build/main.js"
   },
   "author": "Devajit Asem",
   "license": "ISC",
