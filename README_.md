@@ -14,4 +14,4 @@ I have written a small integration test covering all the basic functionality.
     Schedule model contains the availabilities of a doctor.   
     These availabilities are stored as `availableFrom`, `availableTo` having DATETIME datatype.
 
-Documentation: [Click Here](https://documenter.getpostman.com/view/6757338/S11LsHR9)
+Documentation: [Click Here](https://web.postman.co/collections/6757338-eca29ef1-43cb-40b8-9c73-9a9773a3fd86?workspace=53f3e7dc-6c38-47be-8236-d52db1866a64)
