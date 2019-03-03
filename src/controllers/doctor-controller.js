@@ -13,6 +13,12 @@ const createDoctor = async (req, res, next) => {
     }
 };
 
+const getDoctors = async (req, res, next) => {
+    doctorService.getDoctors()
+        .then(doctors => res.json(doctors))
+        .catch(next);
+};
+
 const updateDoctor = async (req, res, next) => {
     const doctorId = req.params.doctorId;
     const body = req.body;
@@ -88,6 +94,7 @@ const getDoctorAppointments = async (req, res, next) => {
 export {
     createDoctor,
     updateDoctor,
+    getDoctors,
     createDoctorSchedules,
     updateDoctorSchedules,
     getDoctorSchedules,

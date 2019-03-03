@@ -28,7 +28,7 @@ describe("API Integration test", () => {
         describe("/POST patient", () => {
             it("should create a Patient", (done) => {
                 chai.request(app)
-                    .post("/api/patient")
+                    .post("/api/patients")
                     .send(patient)
                     .then((res) => {
                         res.should.have.status(201);
@@ -40,7 +40,7 @@ describe("API Integration test", () => {
         describe("/GET patients", () => {
             it("should get all Patients", (done) => {
                 chai.request(app)
-                    .get("/api/patient")
+                    .get("/api/patients")
                     .then((res) => {
                         res.should.have.status(200);
                         done();
@@ -53,10 +53,21 @@ describe("API Integration test", () => {
         describe("/POST doctor", () => {
             it("should create a Doctor", (done) => {
                 chai.request(app)
-                    .post("/api/doctor")
+                    .post("/api/doctors")
                     .send(doctor)
                     .then((res) => {
                         res.should.have.status(201);
+                        done();
+                    });
+            });
+        });
+
+        describe("/GET doctors", () => {
+            it("should get all Doctors", (done) => {
+                chai.request(app)
+                    .get("/api/doctors")
+                    .then((res) => {
+                        res.should.have.status(200);
                         done();
                     });
             });
@@ -163,7 +174,7 @@ describe("API Integration test", () => {
         describe("/GET /patient/:patientId/appointments", () => {
             it("should get all Patient appointments", (done) => {
                 chai.request(app)
-                    .get("/api/patient/1/appointments")
+                    .get("/api/patients/1/appointments")
                     .then((res) => {
                         res.should.have.status(200);
                         done();

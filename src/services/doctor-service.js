@@ -7,9 +7,12 @@ import Schedule from "../models/schedule";
 
 const Op = Sequelize.Op;
 
-const createDoctor = async (doctor) => {
-    await Doctor.sync();
+const createDoctor = (doctor) => {
     return Doctor.create(doctor);
+};
+
+const getDoctors = () => {
+    return Doctor.findAll();
 };
 
 const updateDoctor = async (doctorId, dataToBeUpdated) => {
@@ -104,6 +107,7 @@ const isDoctorAvailable = async (doctor, bookingDetails) => {
 export {
     createDoctor,
     updateDoctor,
+    getDoctors,
     createDoctorSchedules,
     updateDoctorSchedules,
     getDoctorSchedules,
