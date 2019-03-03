@@ -6,7 +6,7 @@ const createDoctor = async (req, res, next) => {
         const createdDoctor = await doctorService.createDoctor(body);
         console.log("createDoctor: Doctor created with Id:", createdDoctor.id);
 
-        res.sendStatus(201);
+        res.status(201).json(createdDoctor);
     } catch (e) {
         console.error("createDoctor:", e.message);
         return next(e);
