@@ -3,10 +3,6 @@ const router = express.Router();
 
 const Doctor = require("../../models/Doctor");
 
-// @route   GET api/doctor/test
-// @desc    Tests doctor route
-router.get("/test", (req, res) => res.json({ msg: "Doctor works" }));
-
 // @route   POST api/doctor
 // @desc    Create a doctor
 router.post("/", (req, res) => {
@@ -18,9 +14,17 @@ router.post("/", (req, res) => {
     .catch(err => res.status(404).json(err));
 });
 
-// @route   GET api/doctor/:doctor_id
+// @route   GET api/doctor/all
+// @desc    Get all doctors
+router.get("/all", (req, res) => {
+  Doctor.find()
+    .then(doctors => res.json(doctors))
+    .catch(err => res.status(404).json({ msg: "No patients found" }));
+});
+
+// @route   GET api/doctor/hours/:doctor_id
 // @desc    Find a doctor's working hours
-router.get("/:doctor_id", (req, res) => {
+router.get("/hours/:doctor_id", (req, res) => {
   Doctor.findById(req.params.doctor_id)
     .then(doctor => res.json(doctor.workinghours))
     .catch(err => res.status(404).json({ error: "No doctor found" }));

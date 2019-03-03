@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 
 const db = require("./config").mongoURI;
 const doctor = require("./routes/api/doctor");
+const patient = require("./routes/api/patient");
+const appointment = require("./routes/api/appointment");
 
 const app = express();
 
@@ -21,6 +23,8 @@ app.get("/", (req, res) => res.json({ success: true }));
 
 // Routes
 app.use("/api/doctor", doctor);
+app.use("/api/patient", patient);
+app.use("/api/appointment", appointment);
 
 const port = process.env.PORT || 3000;
 

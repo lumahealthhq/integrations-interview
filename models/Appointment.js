@@ -10,12 +10,16 @@ const AppointmentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "patient"
   },
+  date: {
+    type: String,
+    required: true
+  },
   from: {
-    type: Date,
+    type: String,
     required: true
   },
   to: {
-    type: Date,
+    type: String,
     required: true
   }
 });
