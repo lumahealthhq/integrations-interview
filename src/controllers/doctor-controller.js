@@ -71,4 +71,25 @@ const getDoctorSchedules = async (req, res, next) => {
     }
 };
 
-export {createDoctor, updateDoctor, createDoctorSchedules, updateDoctorSchedules, getDoctorSchedules};
+const getDoctorAppointments = async (req, res, next) => {
+    const {doctorId} = req.params;
+
+    try {
+        const appointments = await doctorService.getBookedAppointments(doctorId);
+        console.log("getDoctorAppointments: Appointments for doctor with Id:", doctorId);
+
+        res.status(200).json(appointments);
+    } catch (e) {
+        console.error("getDoctorAppointments:", e.message);
+        return next(e);
+    }
+};
+
+export {
+    createDoctor,
+    updateDoctor,
+    createDoctorSchedules,
+    updateDoctorSchedules,
+    getDoctorSchedules,
+    getDoctorAppointments
+};

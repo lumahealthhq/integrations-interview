@@ -12,6 +12,7 @@ const createPatient = async (req, res, next) => {
         return next(e);
     }
 };
+
 const getPatients = async (req, res, next) => {
     try {
         const patients = await patientService.getPatients();
@@ -23,4 +24,15 @@ const getPatients = async (req, res, next) => {
     }
 };
 
-export {createPatient, getPatients};
+const getPatientAppointments = async (req, res, next) => {
+    const {patientId} = req.params;
+    try {
+        const appointments = await patientService.getBookedAppointments(patientId);
+        res.json(appointments);
+    } catch (e) {
+        console.error("getPatients:", e.message);
+        return next(e);
+    }
+};
+
+export {createPatient, getPatients, getPatientAppointments};

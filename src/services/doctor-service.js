@@ -5,6 +5,8 @@ import sequelize from '../db';
 import Doctor from '../models/doctor';
 import Schedule from "../models/schedule";
 
+const Op = Sequelize.Op;
+
 const createDoctor = async (doctor) => {
     await Doctor.sync();
     return Doctor.create(doctor);
@@ -64,8 +66,6 @@ const getDoctorSchedules = async (doctorId) => {
     return doctor.getSchedules();
 };
 
-const Op = Sequelize.Op;
-
 const getBookedAppointments = async (doctorId) => {
     const doctor = await Doctor.findByPk(doctorId);
     return doctor.getAppointments();
@@ -97,7 +97,7 @@ const isDoctorAvailable = async (doctor, bookingDetails) => {
             }
         }
     });
-    console.info("::schedules", schedules);
+    // console.info("::schedules", schedules);
     return schedules.length > 0;
 };
 
