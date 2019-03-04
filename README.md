@@ -1,31 +1,59 @@
 ## Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visualizing all of the available time for a doctor for specific dates.
 
-## Code Example
+## REST API
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+Implement the following functionality:
 
-## Motivation
-
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
-
-## Installation
-
-Provide code examples and explanations of how to get the project.
+* Find a doctor's working hours
+* Book an doctor opening
+* Create and update the list of doctor's working hours
 
 ## API Reference
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+- Find a doctor's working hours
+
+```
+URL: /:doctorId/:date
+METHOD: GET
+```
+
+- Book an doctor opening
+```
+URL: /:patientId/create/
+METHOD: POST
+```
+
+- Create and update the list of doctor's working hours
+```
+# Create a working hour
+URL: '/:doctorId/create/'
+METHOD: POST
+# Delete a working hour
+URL: '/:doctorId/delete/'
+METHOD: DELETE
+```
+
+## Configuration
+
+### How to Configure
+This library is using MongoDB(mLab) as database so the configuration can be loaded from an external configure file called config.json. Sample config shows below.
+```
+# DATABASE CONFIG
+{
+    DB_URI: YOUR_MONGODB_URI,
+    USERNAME: YOUR_MONGODB_USERNAME,
+    PASSWORD: YOUR_MONGODB_PASSWORD
+}
+```
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
+### 1. How to Test
 
-## Contributors
+```
+npm test
+```
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
-## License
-
-A short snippet describing the license (MIT, Apache, etc.)
+### 2. Test case

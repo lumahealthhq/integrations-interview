@@ -5,7 +5,7 @@ const Workinghour = require('../models/workinghour');
 const Doctor = require('../models/doctor');
 const config = require('../config.json');
 
-mongoose.connect(config.DB_URI, {user: 'testAdmin', pass: 'testAdmin#1', useNewUrlParser: true});
+mongoose.connect(config.DB_URI, {user: config.USERNAME, pass: config.PASSWORD, useNewUrlParser: true});
 
 //The API for creating a doctor's working hours
 router.post('/:doctorId/create/', async (req, res) => {

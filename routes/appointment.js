@@ -7,7 +7,7 @@ const Patient = require('../models/patient')
 const Appointment = require('../models/appointment')
 const config = require('../config.json');
 
-mongoose.connect(config.DB_URI, {user: 'testAdmin', pass: 'testAdmin#1', useNewUrlParser: true});
+mongoose.connect(config.DB_URI, {user: config.USERNAME, pass: config.PASSWORD, useNewUrlParser: true});
 
 //The API to book an doctor opening
 router.post('/:patientId/create/', async (req, res) => {
