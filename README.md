@@ -1,30 +1,31 @@
-# Luma Technical Interview
+## Synopsis
 
-## Problem Definition
+At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
 
-A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visualizing all of the available time for a doctor for specific dates. 
+## Code Example
 
-## Interview Task
+Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
-Create a REST API that enables a simple scheduling system that manages doctor availabilities and allows patients to book appointments.
+## Motivation
 
-## Data Model
+A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
 
-Define a set of data models that include:
+## Installation
 
-* a way track assign booked appointments
-* a way to track patients
-* a way to track doctors 
-* a way to track a doctor's working hours and days
+Provide code examples and explanations of how to get the project.
 
-## REST API
+## API Reference
 
-Implement the following functionality:
+Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
 
-* Find a doctor's working hours
-* Book an doctor opening
-* Create and update the list of doctor's working hours
+## Tests
 
-## Deliverables
+Describe and show how to run the tests with code examples.
 
-The code should be delivered as a library that anyone can import and use. It should contain documentation and unit tests that show your understanding of the problem. Once you&#39;re finished, submit a PR to this repo.
+## Contributors
+
+Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+
+## License
+
+A short snippet describing the license (MIT, Apache, etc.)
