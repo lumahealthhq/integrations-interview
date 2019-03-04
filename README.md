@@ -1,8 +1,8 @@
 # Luma Technical Interview
 
-## Problem Definition
+## Solution Basic
 
-A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visualizing all of the available time for a doctor for specific dates. 
+Express framework is used to deal with REST API. Unit test is done by Mocha framework.
 
 ## Interview Task
 
@@ -12,18 +12,18 @@ Create a REST API that enables a simple scheduling system that manages doctor av
 
 Define a set of data models that include:
 
-* a way track assign booked appointments
-* a way to track patients
-* a way to track doctors 
-* a way to track a doctor's working hours and days
+- a way track assign booked appointments
+- a way to track patients
+- a way to track doctors
+- a way to track a doctor's working hours and days
 
 ## REST API
 
 Implement the following functionality:
 
-* Find a doctor's working hours
-* Book an doctor opening
-* Create and update the list of doctor's working hours
+- Find a doctor's working hours
+- Book an doctor opening
+- Create and update the list of doctor's working hours
 
 ## Deliverables
 
