@@ -12,7 +12,7 @@ const Hour = require('../models/workinghour');
 const config = require('../config.json');
 const port = config.PORT;
 
-mongoose.connect(config.DB_URI, {user: 'testAdmin', pass: 'testAdmin#1'});
+mongoose.connect(config.DB_URI, {user: 'testAdmin', pass: 'testAdmin#1', useNewUrlParser: true});
 chai.use(chaiHttp);
 target = `http://localhost:${port}`
 
@@ -54,51 +54,48 @@ describe("Find a doctor's working hours", () => {
         });
     });
 
-
-    describe("POST /:doctorId/:date", () => {
-        it('It should create a working hours for a specific doctor', (done) => {
-            chai.request(target)
-            .post('/workingHours/0/create')
-            .send({ date: '2019-03-03', duration: '10' })
-            .end((err, res) => {
-                should.exist(res);
-                res.should.have.status(200);
-                res.body.should.be.empty;
-                done();
-            });
+    it('It should create a working hours for a specific doctor', (done) => {
+        chai.request(target)
+        .post('/workingHours/0/create')
+        .send({ date: '2019-03-03', duration: '10' })
+        .end((err, res) => {
+            should.exist(res);
+            res.should.have.status(200);
+            res.body.should.be.empty;
+            done();
         });
+    });
 
-        it('It should return a list of working hours from a specific doctor', (done) => {
-            chai.request(target)
-            .get('/workingHours/0/2019-03-03')
-            .send()
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.have.property('doctorId');
-                res.body.should.have.property('workinghours');
-                done();
-            });
+    it('It should return a list of working hours from a specific doctor', (done) => {
+        chai.request(target)
+        .get('/workingHours/0/2019-03-03')
+        .send()
+        .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.have.property('doctorId');
+            res.body.should.have.property('workinghours');
+            done();
         });
+    });
 
-        it('It should delete the working hours from a specific doctor', (done) => {
-            chai.request(target)
-            .delete('/workingHours/0/delete')
-            .send({date: '2019-03-03', duration: 10})
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.be.empty;
-                done();
-            });
+    it('It should delete the working hours from a specific doctor', (done) => {
+        chai.request(target)
+        .delete('/workingHours/0/delete')
+        .send({date: '2019-03-03', duration: 10})
+        .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.empty;
+            done();
         });
+    });
 
-        it('It should be no working hours from a specific doctor', (done) => {
-            chai.request(target)
-            .get('/workingHours/0/2019-03-03')
-            .send()
-            .end((err, res) => {
-                res.should.have.status(404);
-                done();
-            });
+    it('It should be no working hours from a specific doctor', (done) => {
+        chai.request(target)
+        .get('/workingHours/0/2019-03-03')
+        .send()
+        .end((err, res) => {
+            res.should.have.status(404);
+            done();
         });
     });
 });
@@ -143,6 +140,19 @@ describe("Book an doctor opening", () => {
         .end((err, res) => {
             res.should.have.status(200);
             res.body.should.have.property('patientId');
+            res.body.should.have.property('allAppointment');
+            done();
+        })
+
+    });
+
+    it('It should get appointments of a doctor', (done) => {
+        chai.request(target)
+        .get('/appointments/doctor/0')
+        .send()
+        .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.have.property('doctorId');
             res.body.should.have.property('allAppointment');
             done();
         })
