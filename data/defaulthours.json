@@ -1,0 +1,31 @@
+{
+    "Monday": 
+        [
+            { "Start": "09:00", "Finish": "13:00" },
+            { "Start": "14:00", "Finish": "18:00" }
+        ],
+    "Tuesday":
+        [
+            { "Start": "09:00", "Finish": "13:00" },
+            { "Start": "14:00", "Finish": "18:00" }
+        ],
+    "Wednesday":
+        [
+            { "Start": "09:00", "Finish": "13:00" },
+            { "Start": "14:00", "Finish": "18:00" }
+        ],
+    "Thursday":
+        [
+            { "Start": "09:00", "Finish": "13:00" },
+            { "Start": "14:00", "Finish": "18:00" }
+        ],
+    "Friday":
+        [
+            { "Start": "09:00", "Finish": "13:00" },
+            { "Start": "14:00", "Finish": "18:00" }
+        ],
+    "Saturday":
+        [],
+    "Sunday":
+        []
+}
