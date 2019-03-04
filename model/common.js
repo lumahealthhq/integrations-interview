@@ -13,7 +13,6 @@ module.exports = (table) => {
     return db(table).insert(data);
   }
   module.destroy = (where) => {
-    console.log('delete', where)
     return db(table).where(where).del();
   }
 
