@@ -1,0 +1,21 @@
+{
+  "name": "lumahealth",
+  "version": "1.0.0",
+  "description": "LumaHealthProject",
+  "main": "app.js",
+  "author": "Panu",
+  "license": "ISC",
+  "scripts": {
+    "test": "mocha --exit"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "express": "^4.16.4",
+    "json-query": "^2.2.2",
+    "mocha": "^6.0.2",
+    "mongoose": "^5.4.16",
+    "path": "^0.12.7"
+  }
+}
