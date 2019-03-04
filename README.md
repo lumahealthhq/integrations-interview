@@ -2,29 +2,21 @@
 
 ## Solution Basic
 
-Express framework is used to deal with REST API. Unit test is done by Mocha framework.
+Express framework is used to deal with routes. Unit test is done by Mocha framework. The npm package can be installed through "npm i luma-eng-interview"
 
-## Interview Task
+## File Structure
 
-Create a REST API that enables a simple scheduling system that manages doctor availabilities and allows patients to book appointments.
+- index.js contains all the route handler
+- checker.js contains functions to validate input and other assistant functions
+- test folder contains code to test
 
-## Data Model
+## Project Structure and Usage
 
-Define a set of data models that include:
+The project persist all the information into a list of doctor object.
+A doctor object contains the working hour and a list of appointments.
 
-- a way track assign booked appointments
-- a way to track patients
-- a way to track doctors
-- a way to track a doctor's working hours and days
+When create a new appointment, the server will check whether the doctor exists, whether the desired time is within a working hour, and whether the desired time is already booked by others. If the check passed, a new appointment with the information of patient name and time will be added to the doctor’s appointments list.
 
-## REST API
+## Test
 
-Implement the following functionality:
-
-- Find a doctor's working hours
-- Book an doctor opening
-- Create and update the list of doctor's working hours
-
-## Deliverables
-
-The code should be delivered as a library that anyone can import and use. It should contain documentation and unit tests that show your understanding of the problem. Once you&#39;re finished, submit a PR to this repo.
+The first kind of tests are used to test the route handlers. The second kind of tests are used to test the checker functions.
