@@ -72,9 +72,11 @@ This library is using MongoDB(mLab) as database so the configuration can be load
 
 ```
 # In your project's app.js
-app = require('luma-eng-interview-xingcheng-sun')
+app = require('luma-eng-interview-xingcheng-sun');
 
-app.listen(8081, "0.0.0.0");
+const PORT = 8081;
+app.listen(PORT, "0.0.0.0");
+console.log("We are live on " + PORT);
 ```
 
 ## Tests
