@@ -6,6 +6,7 @@ const db = require("./config").mongoURI;
 const doctor = require("./routes/api/doctor");
 const patient = require("./routes/api/patient");
 const appointment = require("./routes/api/appointment");
+const tests = require("./routes/api/tests");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) => res.json({ success: true }));
 app.use("/api/doctor", doctor);
 app.use("/api/patient", patient);
 app.use("/api/appointment", appointment);
+app.use("/api/tests", tests);
 
 const port = process.env.PORT || 3000;
 
