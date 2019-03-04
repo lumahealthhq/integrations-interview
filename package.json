@@ -1,0 +1,26 @@
+{
+  "name": "docscheduleapi",
+  "version": "1.0.0",
+  "description": "Appointment Scheduling APIs for doctors and patients",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "mocha --recursive --exit --timeout 100000"
+  },
+  "author": "Diksha Katre",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.0.2",
+    "mockgoose": "^8.0.1",
+    "moment": "^2.24.0",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.16"
+  }
+}
