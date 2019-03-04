@@ -37,9 +37,19 @@ npm test
 ## API
 
 * Create a new doctor - POST `/doctor` { "name" : "Doctor" }
-* Create a new patient - POST `/patient` { "name" : "Doctor" }
+* Create a new patient - POST `/patient` { "name" : "Patient" }
 * Create schedule for a doctor - POST `/doctor` { "doctor_id" : 1, "date": "2019-03-03 09:00:00", slots: 4, duration: 20 }
 * Create an appointment - POST `/appointment` { "patient_id" : 1, "schedule_id" : 1 }
 
 Get/Update/Delete works trivially.
 Get accepts query params for special queries as needed e.g. GET `/schedule?status=1` for all booked slots
+
+## Packages used
+
+* async
+* express
+* sqlite3
+* knex
+* chai
+* mocha
+* moment
