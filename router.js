@@ -12,12 +12,10 @@ const route = (app) => {
   app.post('/doctor', doctor.create)
   app.get('/doctor', doctor.get)
   app.post('/doctor/:id', doctor.update)
-  app.delete('/doctor/:id', doctor.del)
 
   app.post('/patient', patient.create)
   app.get('/patient', patient.get)
   app.post('/patient/:id', patient.update)
-  app.delete('/patient/:id', patient.del)
   
   app.post('/schedule', schedule.create)
   app.get('/schedule', schedule.get)

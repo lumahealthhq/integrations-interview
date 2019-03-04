@@ -57,7 +57,6 @@ const create = (req, res) => {
   ], (err, result) => {
       if (err) {
         console.log(err);
-        if (err == ERROR.NF) { return res.status(404).send(ERROR.NF); } 
         if (err == ERROR.AB) { return res.status(200).send(ERROR.AB); }
         return res.status(500).send(err);
       }
@@ -71,8 +70,6 @@ const get = (req, res) => {
     if (err) {
       console.log(err);
       return res.status(500).send(err)
-    } else if (data.length == 0) {
-      return res.status(404).send('Not Found!')
     }
     return res.status(200).json(data);
   })
@@ -91,7 +88,6 @@ const update = (req, res) => {
 const getScheduleId = (appointment_id, next) => {
   appointment.get({ id: appointment_id }).asCallback((err, data) => {
     if (err) { return next(err); } 
-    console.log(data);
     store = {
       appointment_id,
       schedule_id: data[0].schedule_id,

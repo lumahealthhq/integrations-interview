@@ -53,9 +53,6 @@ const get = (req, res) => {
     if (err) {
       console.log(err);
       return res.status(500).send(err)
-    } else if (data.length == 0) {
-      console.log(data);
-      return res.status(404).send('Not Found!')
     }
     return res.status(200).json(data);
   })
