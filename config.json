@@ -1,0 +1,6 @@
+{
+    "DB_URI": "mongodb://",
+    "USERNAME": "",
+    "PASSWORD": "",
+    "PORT": ""
+}

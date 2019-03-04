@@ -10,29 +10,50 @@ Implement the following functionality:
 * Book an doctor opening
 * Create and update the list of doctor's working hours
 
+
 ## API Reference
 
 - Find a doctor's working hours
-
 ```
-URL: /:doctorId/:date
-METHOD: GET
+URL: /:doctorId/:date  
+METHOD: GET 
+PARAMS:
+a. doctorId
+b. date
 ```
 
 - Book an doctor opening
 ```
 URL: /:patientId/create/
 METHOD: POST
+PARAMS:
+a. doctorId
+b. date
+c. duration
 ```
 
 - Create and update the list of doctor's working hours
 ```
 # Create a working hour
 URL: '/:doctorId/create/'
-METHOD: POST
+METHOD: POST  
+PARAMS:
+a. doctorId
+b. date
+c. duration
+
 # Delete a working hour
 URL: '/:doctorId/delete/'
 METHOD: DELETE
+PARAMS:
+a. doctorId
+b. date
+c. duration
+```
+
+## Installation
+```
+npm i luma-eng-interview-xingcheng-sun -S
 ```
 
 ## Configuration
@@ -48,6 +69,19 @@ This library is using MongoDB(mLab) as database so the configuration can be load
 }
 ```
 
+
+### How to Use
+
+```
+# In your project's app.js
+app = require('luma-eng-interview-xingcheng-sun');
+
+
+const PORT = 8081;
+app.listen(PORT, "0.0.0.0");
+console.log("We are live on " + PORT);
+```
+
 ## Tests
 
 ### 1. How to Test
@@ -57,3 +91,5 @@ npm test
 ```
 
 ### 2. Test case
+![Test case](https://cdn1.imggmi.com/uploads/2019/3/4/460ae83f525d81bfd83d6d4e3b154b60-full.png)
+
