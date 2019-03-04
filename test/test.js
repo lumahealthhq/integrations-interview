@@ -12,7 +12,7 @@ const Hour = require('../models/workinghour');
 const config = require('../config.json');
 const port = config.PORT;
 
-mongoose.connect(config.DB_URI, {user: 'testAdmin', pass: 'testAdmin#1', useNewUrlParser: true});
+mongoose.connect(config.DB_URI, {user: config.USERNAME, pass: config.PASSWORD, useNewUrlParser: true});
 chai.use(chaiHttp);
 target = `http://localhost:${port}`
 
