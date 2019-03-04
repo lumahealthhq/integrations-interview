@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const checker = require("./checker");
+const BaseJoi = require("joi");
+const Extension = require("joi-date-extensions");
+const Joi = BaseJoi.extend(Extension);
 
 app.use(express.json());
 
