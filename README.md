@@ -18,7 +18,6 @@ Implemented CRUD for the following functionality:
 ```
 npm install
 npm index.js
-
 ```
 
 ## How to use as a module
@@ -26,13 +25,11 @@ npm index.js
 ```
 var schedule_app = require('luma-eng-interview')
 app.use('/api', schedule_app)
-
 ```
+Reference - https://derickbailey.com/2016/02/17/using-express-sub-apps-to-keep-your-code-clean/
 
 ## How to run tests
 
 ```
 npm test
-
 ```
-
