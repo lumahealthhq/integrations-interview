@@ -1,4 +1,4 @@
-# Luma Technical Interview
+# Pengfei's Solution
 
 ## Solution Basic
 
@@ -8,7 +8,7 @@ Express framework is used to deal with routes. Unit test is done by Mocha framew
 
 - index.js contains all the route handler
 - checker.js contains functions to validate input and other assistant functions
-- test folder contains code to test
+- test folder contains testing code
 
 ## Project Structure and Usage
 

@@ -36,11 +36,8 @@ app.post("/workingHours", (req, res) => {
     return;
   }
   // update or create a doctor working hours
-  const input = {
-    name: req.body.name,
-    workingHours: req.body.workingHours,
-    appointments: []
-  };
+  const input = ({ name = "", workingHours = "" } = req.body);
+  input.appointments = [];
   // if there is not such doctor, add this doctors
   // if there is already this doctor, update his or her workingHours
   const doctor = doctors.find(d => d.name === input.name);
@@ -59,12 +56,12 @@ app.post("/appointments", (req, res) => {
     res.status(404).send("Invalid input");
   }
   //create a new appointment
-  const input = {
-    patientName: req.body.patientName,
-    doctorName: req.body.doctorName,
-    appointDate: req.body.appointDate,
-    appointTime: req.body.appointTime
-  };
+  const input = ({
+    patientName = "",
+    doctorName = "",
+    appointDate = "",
+    appointTime = ""
+  } = req.body);
   //check whether overlap with an existing appointment
   const doctor = doctors.find(d => d.name === req.body.doctorName);
   if (!doctor) {
