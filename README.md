@@ -6,7 +6,8 @@ Express framework is used to deal with routes. Unit test is done by Mocha framew
 
 ## File Structure
 
-- index.js contains all the route handler
+- index.js entry of the server
+- routes.js route handlers(the exported code for library)
 - checker.js contains functions to validate input and other assistant functions
 - test folder contains testing code
 

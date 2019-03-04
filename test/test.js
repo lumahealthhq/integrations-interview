@@ -3,8 +3,12 @@ const should = chai.should();
 const chaiHttp = require("chai-http");
 const assert = require("chai").assert;
 const request = require("supertest");
-const app = require("../index");
 const checker = require("../checker");
+
+const express = require("express");
+const app = express();
+app.use(express.json());
+require("../routes")(app);
 
 chai.use(chaiHttp);
 // test get a doctor's working hours
