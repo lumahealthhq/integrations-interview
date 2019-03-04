@@ -5,10 +5,7 @@ const assert = require("chai").assert;
 const request = require("supertest");
 const checker = require("../checker");
 
-const express = require("express");
-const app = express();
-app.use(express.json());
-require("../routes")(app);
+const app = require("../index");
 
 chai.use(chaiHttp);
 // test get a doctor's working hours
