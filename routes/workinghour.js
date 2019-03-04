@@ -46,6 +46,7 @@ router.post('/:doctorId/create/', async (req, res) => {
 
 });
 
+//The API for deleting doctor's working hour
 router.delete('/:doctorId/delete/', async (req, res) => {
     let doctorId = req.params.doctorId;
     let date = req.body.date;

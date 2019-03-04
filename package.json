@@ -1,6 +1,6 @@
 {
   "name": "luma-eng-interview-xingcheng-sun",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A REST API that enables a simple scheduling system that manages doctor availabilities and allows patients to book appointments.",
   "main": "index.js",
   "scripts": {
