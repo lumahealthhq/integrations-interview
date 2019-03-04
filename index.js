@@ -14,7 +14,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/workingHours', workingHours);
 app.use('/appointments', appointments);
 
-app.listen(config.PORT, "0.0.0.0");
-console.log('we live on ' + config.PORT);
-
 module.exports = app;

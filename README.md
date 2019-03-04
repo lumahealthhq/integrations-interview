@@ -50,6 +50,11 @@ b. date
 c. duration
 ```
 
+## Installation
+```
+npm i luma-eng-interview-xingcheng-sun -S
+```
+
 ## Configuration
 
 ### How to Configure
@@ -61,6 +66,15 @@ This library is using MongoDB(mLab) as database so the configuration can be load
     USERNAME: YOUR_MONGODB_USERNAME,
     PASSWORD: YOUR_MONGODB_PASSWORD
 }
+```
+
+### How to Use
+
+```
+# In your project's app.js
+app = require('luma-eng-interview-xingcheng-sun')
+
+app.listen(8081, "0.0.0.0");
 ```
 
 ## Tests
