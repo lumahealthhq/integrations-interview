@@ -2,11 +2,11 @@ const BaseJoi = require("joi");
 const Extension = require("joi-date-extensions");
 const Joi = BaseJoi.extend(Extension);
 
-// the input hour is in the format of 08:13, meaning from 8:00 am
-// to 13:00 pm
+// the input hour is in the format of 08:13 (24 hour format), meaning from 8:00
+// to 13:00
 const time = /^(0[0-9]|1[0-9]|2[0-3]):(0[0-9]|1[0-9]|2[0-3])$/;
 
-// check the data input to create doctor is valid
+// check the data input to create doctor is valid (in the format of 2019-03-04)
 function checkValidDoctor(input) {
   const schemaHour = Joi.object().pattern(
     Joi.date().format("YYYY-MM-DD"),
