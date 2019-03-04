@@ -26,6 +26,13 @@ The application would start on `localhost` at port `3000`
 
 Use `npm test` to start all the unit tests. Unit test would run on port `3001`
 
+## How to import as a module
+
+```
+var doc_schedule_api = require('doc-schedule-app')
+app.use('/api', doc_schedule_api)
+```
+
 ## How to use the APIs
 
 Please refer to the API documentation at https://documenter.getpostman.com/view/166745/S11LtHrs

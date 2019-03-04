@@ -1,5 +1,5 @@
 {
-  "name": "docscheduleapi",
+  "name": "doc-schedule-app",
   "version": "1.0.0",
   "description": "Appointment Scheduling APIs for doctors and patients",
   "main": "index.js",
