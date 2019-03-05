@@ -1,0 +1,30 @@
+{
+  "name": "api-vrajesh",
+  "version": "1.0.0",
+  "description": "A node.js restfulll api tutorial project",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "node",
+    "restful",
+    "api"
+  ],
+  "author": "Vrajesh Akabari",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "express": "^4.16.4",
+    "mocha": "^6.0.2",
+    "mongoose": "^5.4.17",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10",
+    "supertest": "^3.4.2"
+  }
+}
