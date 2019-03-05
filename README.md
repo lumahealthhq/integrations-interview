@@ -26,23 +26,23 @@ For this REST API project, I used the MVC design pattern that has 3 models, name
 
 ## Endpoints
 ### Patient:
-GET 	/patients		: get a list of all patients
-POST 	/patients		: create a new patient record and saves it to the database
-DELETE	/patients/:patientName	: delete a patient record and reflects this change onto the database
-GET 	/patients/:patientName	: get details of a patient by patient name
+* GET 	/patients		              : get a list of all patients
+* POST 	/patients		              : create a new patient record and saves it to the database
+* DELETE	/patients/:patientName	: delete a patient record and reflects this change onto the database
+* GET 	/patients/:patientName	  : get details of a patient by patient name
 
 ### Doctor:
-GET 	/doctors		: get a list of all doctors and their working hours
-POST 	/doctors		: create a new doctor record
-GET	/doctors/:doctorName	: get details of a doctor by doctor name
-DELETE 	/doctors/:doctorName	: delete a given doctor record
-PUT	/doctors/:doctorName	: update a doctor's working hours
+* GET 	/doctors		              : get a list of all doctors and their working hours
+* POST 	/doctors		              : create a new doctor record
+* GET	/doctors/:doctorName	      : get details of a doctor by doctor name
+* DELETE 	/doctors/:doctorName	  : delete a given doctor record
+* PUT	/doctors/:doctorName	      : update a doctor's working hours
 
 ### Opening:
-GET 	/openings		: get a list of all available openings for patients to book
-POST 	/openings/new		: post a new opening
-POST 	/openings/book		: book an existing opening
-DELETE 	/openings		: delete an opening
+* GET 	/openings		    : get a list of all available openings for patients to book
+* POST 	/openings/new		: post a new opening
+* POST 	/openings/book	: book an existing opening
+* DELETE 	/openings		  : delete an opening
 
 ## API Documentation
 [API docs](https://documenter.getpostman.com/view/6684234/S11NLwSm)
@@ -55,12 +55,12 @@ By default, Mongoose would produce a collection name that pluralizes the model n
 
 I included the links below to aid you in connecting this API with the database. Remember to configure your IP entries under the Security Tab of your dedicated MongoDB cluster. Here are some of the issues that I faced while writing this project:
 
-[Mongo couldn't connect to server](https://stackoverflow.com/questions/13312358/mongo-couldnt-connect-to-server-127-0-0-127017)
-[No data/db folder](https://stackoverflow.com/questions/7948789/mongod-complains-that-there-is-no-data-db-folder)
+* [Mongo couldn't connect to server](https://stackoverflow.com/questions/13312358/mongo-couldnt-connect-to-server-127-0-0-127017)
+* [No data/db folder](https://stackoverflow.com/questions/7948789/mongod-complains-that-there-is-no-data-db-folder)
 
 Here are some resources that I found helpful when developing this project:
-[Express Routing](https://expressjs.com/en/guide/routing.html)
-[Writing a CRUD App](https://codeburst.io/writing-a-crud-app-with-node-js-and-mongodb-e0827cbbdafb)
-[API testing](https://ubuverse.com/introduction-to-node-js-api-unit-testing-with-mocha-and-chai/)
+* [Express Routing](https://expressjs.com/en/guide/routing.html)
+* [Writing a CRUD App](https://codeburst.io/writing-a-crud-app-with-node-js-and-mongodb-e0827cbbdafb)
+* [API testing](https://ubuverse.com/introduction-to-node-js-api-unit-testing-with-mocha-and-chai/)
 
 
