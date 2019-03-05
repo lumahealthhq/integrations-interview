@@ -1,0 +1,35 @@
+{
+  "name": "luma",
+  "version": "1.0.0",
+  "description": "A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visualizing all of the available time for a doctor for specific dates.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./node_modules/nodemon/bin/nodemon.js ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prateekro/luma-eng-interview.git"
+  },
+  "author": "Prateek Rokadiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prateekro/luma-eng-interview/issues"
+  },
+  "homepage": "https://github.com/prateekro/luma-eng-interview#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.0.2",
+    "mockgoose": "^8.0.1",
+    "moment": "^2.24.0",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "boom": "^7.3.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.16"
+  }
+}
