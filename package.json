@@ -1,0 +1,31 @@
+{
+  "name": "luma-eng-interview",
+  "version": "1.0.0",
+  "description": "internship-assessment",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YaminiMahendran/luma-eng-interview.git"
+  },
+  "author": "ymahendran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YaminiMahendran/luma-eng-interview/issues"
+  },
+  "homepage": "https://github.com/YaminiMahendran/luma-eng-interview#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "pg": "^7.8.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.43.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
