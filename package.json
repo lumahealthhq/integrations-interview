@@ -1,0 +1,20 @@
+{
+  "name": "luma-challenge",
+  "version": "1.0.0",
+  "description": "REST API that enables a simple scheduling system that manages doctor availabilities and allows patients to book appointments",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Zheng Hong Tan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "express": "^4.16.4",
+    "mocha": "^6.0.2",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.16"
+  }
+}
