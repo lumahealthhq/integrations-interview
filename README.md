@@ -1,4 +1,4 @@
-# Luma Health
+# Luma Health  [![Awesome](https://github.com/prateekro/ref/blob/master/badge/awesomebadge.svg)](https://github.com/prateekro/) 
 ###### API Module for appointment scheduling
 
 ---
