@@ -8,7 +8,6 @@ module.exports = {
     bookAppointment(req, res) 
     {
       // check patient conflict
-      // TODO - fails if the given stime/etime encompasses the patients starttime/endtime
       Appointment
         .findAll({
             where: 

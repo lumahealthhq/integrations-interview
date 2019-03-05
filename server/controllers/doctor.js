@@ -69,7 +69,7 @@ module.exports = {
       }
       else
       {
-        res.status(200).send("Schedule already exists");
+        res.status(400).send("Schedule already exists");
       }
     })
   },
@@ -102,7 +102,7 @@ module.exports = {
           }
         })
       }
-    res.status(200).send("Schedule created successfully");        
+    res.status(201).send("Schedule created successfully");        
   },
   updateAvailability(req,res)
   {
@@ -118,7 +118,7 @@ module.exports = {
           avail_date: req.body.date
         }
     })
-    .then(updateAvailability => res.status(201).send(updateAvailability))
+    .then(updateAvailability => res.status(202).send(updateAvailability))
     .catch(error => res.status(400).send(error));
   },
   getWorkingHours(req,res)

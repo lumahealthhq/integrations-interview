@@ -10,7 +10,7 @@ module.exports = (app) => {
   
   app.post('/api/doctor/create', Doctor.create); 
   app.post('/api/doctor/createavailability', Doctor.createAvailability);
-  app.post('/api/doctor/createlist', Doctor.createAvailabilities);
+  app.post('/api/doctor/createavailabilities', Doctor.createavailabilities);
   app.post('/api/doctor/updateAvailability', Doctor.updateAvailability);
     
   app.get('/api/doctor/getall', Doctor.getAllDoctors);
