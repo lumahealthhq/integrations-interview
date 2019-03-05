@@ -16,4 +16,14 @@ The application should start on `localhost` at port `3000`
 
 
 ---
+[API Docs can be found here : <u>https://documenter.getpostman.com/view/1318242/S11NMGhM </u>](https://documenter.getpostman.com/view/1318242/S11NMGhM)
 
+---
+
+##### For importing it as a module
+
+```
+var lumaHealth = require('luma')
+app.use('/api', lumaHealth)
+```
+ 
