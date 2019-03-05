@@ -14,29 +14,24 @@ module.exports = {
             where: 
             {
                 patient_id: req.body.patientId,
-                appt_date: req.body.apptDate,
-                [Op.or]: 
-                [
-                    {
-                        start_time: {
-                            [Op.or]: [{[Op.eq]: req.body.stime}, {[Op.notBetween]: [req.body.stime, req.body.etime]}]
-                        }
-                    },
-                    {
-                        end_time: {
-                            [Op.or]: [{[Op.eq]: req.body.etime}, {[Op.notBetween]: [req.body.stime, req.body.etime]}]                    
-                        }
-                    }
-                ]                
+                appt_date: req.body.apptDate         
             }
         })
         .then(patientConflict => {
             //console.log("patientConflict: %o", patientConflict)
-            if(patientConflict.length > 0)
+            let isPatientConflict = false;
+            for(var i =0; i < patientConflict.length; i++)
             {
-                res.status(200).send("Error - Appointment already exists for this patient");
-            }
-            else
+                var patient = patientConflict[i];
+                if((req.body.stime >= patient.start_time && req.body.stime < patient.end_time) 
+                || (req.body.etime > patient.start_time && req.body.etime <= patient.end_time))
+                {
+                    isPatientConflict = true;                    
+                    res.status(200).send("Error - Appointment already exists for this patient");  
+                    break;                      
+                }
+            }           
+            if(!isPatientConflict)
             {
                 // check doctor availability
                 Availability
@@ -67,29 +62,25 @@ module.exports = {
                             where: 
                             {
                                 doctor_id: req.body.doctorId,
-                                appt_date: req.body.apptDate,
-                                [Op.or]: 
-                                [
-                                    {
-                                        start_time: {
-                                            [Op.or]: [{[Op.eq]: req.body.stime}, {[Op.notBetween]: [req.body.stime, req.body.etime]}]
-                                        }
-                                    },
-                                    {
-                                        end_time: {
-                                            [Op.or]: [{[Op.eq]: req.body.etime}, {[Op.notBetween]: [req.body.stime, req.body.etime]}]                    
-                                        }
-                                    }
-                                ]
+                                appt_date: req.body.apptDate
                             }
                         })
                         .then(doctorConflict => {
-                            console.log("doctorConflict: %o", doctorConflict)                
-                            if(doctorConflict.length > 0)
+                            console.log("doctorConflict: %o", doctorConflict)
+                            let isApptConflict = false; 
+                            
+                            for(var i =0; i < doctorConflict.length; i++)
                             {
-                                res.status(200).send("Error - Doctor has an conflicting appointment");
+                                var doctorAppt = doctorConflict[i];
+                                if((req.body.stime >= doctorAppt.start_time && req.body.stime < doctorAppt.end_time) 
+                                || (req.body.etime > doctorAppt.start_time && req.body.etime <= doctorAppt.end_time))
+                                {
+                                    isApptConflict = true
+                                    res.status(200).send("Error - Doctor has an conflicting appointment");
+                                    break;                      
+                                }
                             }
-                            else 
+                            if(!isApptConflict) 
                             {
                                 Appointment
                                 .create({
