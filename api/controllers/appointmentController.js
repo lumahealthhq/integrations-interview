@@ -51,6 +51,8 @@ exports.update_a_appointment = (req, res) => {
                 message:"Unexpected error occurred",
                 error: err
             });
+            console.log("Update A");
+
         } else if(existingAppointment) {
             var new_appointment = new Appointments(req.body);
             validateAppointment(new_appointment, (validAppointment, message) => {
@@ -61,6 +63,8 @@ exports.update_a_appointment = (req, res) => {
                                 message:"Unable to update original appointment",
                                 error: err
                             });
+                            console.log("Update B");
+
                         } else {
                             Appointments.remove({
                                 _id: req.params.appointmentId
@@ -71,6 +75,8 @@ exports.update_a_appointment = (req, res) => {
                                         error: err,
                                         new_appointment: appointment_new
                                     });
+                                    console.log("Update C");
+
                                 } else {
                                     res.status(200).json({ message: 'Appointment successfully updated' });
                                 }

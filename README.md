@@ -8,7 +8,12 @@
 > Start database listener `mongod` 
 >
 > Start Project `npm start`
+
+The application should start on `localhost` at port `3000`
  
 #### Steps to initiate test
 > Start test `npm test`
+
+
+---
 
