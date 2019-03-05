@@ -102,6 +102,7 @@ module.exports = {
         })       
         .catch(error => res.status(400).send(error));
     },
+    // gets all the appointments 
     getAllAppointments(req, res) 
     {
       return Appointment
@@ -109,6 +110,7 @@ module.exports = {
         .then(appointments => res.status(200).send(appointments))
         .catch(error => res.status(400).send(error));
     },
+    // get all appointments on a date
     getAllAppointmentsPerDate(req, res) 
     {
       return Appointment

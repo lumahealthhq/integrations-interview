@@ -3,6 +3,7 @@ const Appointment = require('../models').Appointment;
 const Availability = require('../models').DoctorAvailability;
 
 module.exports = {
+  // creates a doctor
   create(req, res) 
   {
     return Doctor
@@ -14,6 +15,7 @@ module.exports = {
       .then(doctor => res.status(201).send(doctor))
       .catch(error => res.status(400).send(error));
   },
+  // returns all doctors
   getAllDoctors(req, res) 
   {
     return Doctor
@@ -21,6 +23,7 @@ module.exports = {
       .then(doctors => res.status(200).send(doctors))
       .catch(error => res.status(400).send(error));
   },
+  // returns a doctor's details
   getDoctor(req, res) 
   {
     return Doctor
@@ -32,6 +35,7 @@ module.exports = {
       .then(doctor => res.status(200).send(doctor))
       .catch(error => res.status(400).send(error));
   },
+  // returns a doctor's appointment
   getAppointments(req, res) 
   {
     return Appointment
@@ -43,6 +47,7 @@ module.exports = {
       .then(appts => res.status(200).send(appts))
       .catch(error => res.status(400).send(error));
   },
+  // creates availability for a doctor
   createAvailability(req, res) 
   {
     Availability.findAll({
@@ -73,6 +78,7 @@ module.exports = {
       }
     })
   },
+  // creates a lits of availabilities for a doctor
   createAvailabilities(req, res) 
   {
     let aList = req.body;
@@ -104,6 +110,7 @@ module.exports = {
       }
     res.status(201).send("Schedule created successfully");        
   },
+  // updates availability for a doctor
   updateAvailability(req,res)
   {
     console.log("%o", req.body)    
@@ -121,6 +128,7 @@ module.exports = {
     .then(updateAvailability => res.status(202).send(updateAvailability))
     .catch(error => res.status(400).send(error));
   },
+  // returns a doctor's working hours on a date
   getWorkingHours(req,res)
   {
     return Availability
@@ -135,6 +143,7 @@ module.exports = {
     })
     .catch(error => res.status(400).send(error));
   },
+  // returns a doctor's working hours on all available dates
   getAllWorkingHours(req, res) 
   {
     return Availability
@@ -146,6 +155,7 @@ module.exports = {
     .then(appts => res.status(200).send(appts))
     .catch(error => res.status(400).send(error));
   },
+  // returns working hours of all the doctors
   getDoctorsWorkingHours(req, res) 
   {
     return Availability

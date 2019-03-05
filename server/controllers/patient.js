@@ -2,6 +2,7 @@ const Patient = require('../models').Patient;
 const Appointment = require('../models').Appointment;
 
 module.exports = {
+  // creates a patient
   create(req, res) 
   {
     return Patient
@@ -13,6 +14,7 @@ module.exports = {
       .then(patient => res.status(201).send(patient))
       .catch(error => res.status(400).send(error));
   },
+  // returns all patients
   getAllPatients(req, res) 
   {
     return Patient
@@ -20,6 +22,7 @@ module.exports = {
       .then(patients => res.status(200).send(patients))
       .catch(error => res.status(400).send(error));
   },
+  // returns a patient
   getPatient(req, res) 
   {
     return Patient
@@ -31,6 +34,7 @@ module.exports = {
       .then(patient => res.status(200).send(patient))
       .catch(error => res.status(400).send(error));
   },
+  // gets a patients appointment
   getAppointments(req, res) 
   {
     return Appointment
