@@ -35,6 +35,6 @@ var appointmentSchema = new Schema({
 });
 
 
-var Appointments = mongoose.model('Appointment', appointmentSchema);
+var Appointments = mongoose.model('Appointments', appointmentSchema);
 
 module.exports = Appointments;
