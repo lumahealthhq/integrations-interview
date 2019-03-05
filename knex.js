@@ -5,7 +5,9 @@ knex.raw('select 1+1 as result').asCallback((err, data) => {
     console.log(err);
     process.exit(1);
   } 
-  console.log('Connected to DB');
+  knex.raw("PRAGMA foreign_keys = ON").asCallback((err, data) => {
+    console.log('Connected to DB');
+  });
 });
 
 module.exports = {
