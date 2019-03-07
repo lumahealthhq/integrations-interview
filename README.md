@@ -1,5 +1,6 @@
 # Luma Technical Interview
 
+Note: original repo with commit history is at [original](https://github.com/hiteshsantwani/Luma_Health)
 # install the library with following command:
 
 npm install doctorappointmentscheduler
