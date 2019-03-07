@@ -1,0 +1,12 @@
+POST /AddDoctor HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+cache-control: no-cache
+Postman-Token: 894cf671-f648-43d2-9c1d-697ab5d1c6b5
+{
+    "Availabilty": [],
+    "Speciality": "ent",
+    "F_name": "Hitesh",
+    "L_name": "Santwani",
+    "Doctor_email": "hitesttrtustssehska@buffalo.edu"
+}------WebKitFormBoundary7MA4YWxkTrZu0gW--

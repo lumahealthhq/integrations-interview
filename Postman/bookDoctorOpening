@@ -1,0 +1,6 @@
+POST /bookWorkingHoursDoctor HTTP/1.1
+Host: localhost:3000
+Content-Type: application/x-www-form-urlencoded
+cache-control: no-cache
+Postman-Token: e736c170-a215-4478-9c7a-7a49e5bf0364
+Doctor_email=hiteshka%40buffalo.eduPatient_phone=9960082340A_Date=2002-02-01+00%3A00%3A00.000undefined=undefined
