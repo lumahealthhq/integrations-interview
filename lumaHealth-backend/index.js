@@ -114,7 +114,7 @@ app.post('/book',(req,res)=>{
         res.sendStatus(200).end();
     },(err)=>{
         console.log("Error Creating patient");
-        res.sendStatus(400).end();
+        //res.sendStatus(400).end();
     })
     console.log("value :" + req.body.selecteddoctor);
     console.log(req.body.day);
@@ -123,18 +123,26 @@ app.post('/book',(req,res)=>{
    Doctors.findOne({
        'Name' : req.body.selecteddoctor
    }, (err, user) => {
-     var s = user[Day];
      for(var i=0;i<user[Day].length;i++){
         if(user[Day][i].slot === req.body.selectedslot){
-        user[Day][i].status = "Booked"
-        }
-        } 
-        console.log(user[Day]);'s'
+        if(user[Day][i].status == "Available"){
+        user[Day][i].status = "Booked";
         user.save().then((doc) => {
             console.log("User details saved successfully.", doc);
             }, (err) => {
             console.log("Unable to save user details.", err);
-            }); });
+            });
+    
+    }
+        else {
+        console.log("Appointmemt already booked");
+        res.sendStatus(400).end();
+        }
+        }
+
+        } 
+        //console.log(user[Day]);
+        });
 })
 
 app.listen(3001,()=>{

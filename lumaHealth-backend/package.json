@@ -1,20 +1,27 @@
 {
-  "name": "book-store-app",
+  "name": "lumahealth-app",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "expres": "0.0.5",
     "express": "^4.16.3",
+    "it": "^1.1.1",
+    "mocha": "^6.0.2",
     "mongodb": "^3.1.8",
     "mongoose": "^5.3.3",
     "nodemon": "^1.18.10",
     "react-select": "^2.4.1"
+  },
+  "directories": {
+    "test": "test"
   },
   "description": ""
 }
