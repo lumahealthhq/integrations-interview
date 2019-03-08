@@ -1,30 +1,36 @@
-# Luma Technical Interview
+# Navid Yousefzai ヾ(⌐■_■)ノ♪
 
-## Problem Definition
+#   API  using Node.js and Sequelize library for MySQL ****Luma Technical Interview
 
-A busy hospital has a list of dates that a doctor is available to see patients. Their process is manual and error prone leading to overbooking. They also have a hard time visualizing all of the available time for a doctor for specific dates. 
+# getting Started
 
-## Interview Task
+*** npm install
+*** npm start
 
-Create a REST API that enables a simple scheduling system that manages doctor availabilities and allows patients to book appointments.
 
-## Data Model
+# Test
 
-Define a set of data models that include:
+*** npm test
 
-* a way track assign booked appointments
-* a way to track patients
-* a way to track doctors 
-* a way to track a doctor's working hours and days
 
-## REST API
+## Documentation link
 
-Implement the following functionality:
+https://documenter.getpostman.com/view/3152687/S11PrGGm#69bd06b4-efb3-ef24-c981-dc92fba946d3 
 
-* Find a doctor's working hours
-* Book an doctor opening
-* Create and update the list of doctor's working hours
+## description 
 
-## Deliverables
+I have used Express and Sequelize library to build this API, i have to say its not prefect but i will meet the interview request.
 
-The code should be delivered as a library that anyone can import and use. It should contain documentation and unit tests that show your understanding of the problem. Once you&#39;re finished, submit a PR to this repo.
+## for MySQL database i have used  Amazon Web Services RDS . i consider my self AWS ninja.***
+
+
+
+## Todos and Things that if i had more time to work on 
+
+
+* validation on all end points
+* more logic on the server side
+* making a nice Front End 
+* Drink more green tea :)
+
+

@@ -1,0 +1,36 @@
+{
+  "name": "luma-api",
+  "version": "1.0.0",
+  "description": "luma eng interview",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --timeout 5000 routes/test/*.js --require babel-register --reporter spec || exit 0",
+    "start": "nodemon ./index.js --exec babel-node -e js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyousefzai/luma-eng-interview.git"
+  },
+  "author": "navid yousefzai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nyousefzai/luma-eng-interview/issues"
+  },
+  "homepage": "https://github.com/nyousefzai/luma-eng-interview#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "express": "^4.16.4",
+    "mocha": "^6.0.2",
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.43.0"
+  }
+}
