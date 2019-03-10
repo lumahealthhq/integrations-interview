@@ -1,0 +1,21 @@
+{
+  "name": "doctor-booking",
+  "version": "1.0.0",
+  "description": "doctor appointment scheduling system",
+  "main": "app.js",
+  "directories":{
+    "test":"test"
+  },
+  "scripts": {
+    "test":"mocha test/booking-test-success.js test/booking-test-failure1.js test/booking-test-failure2.js"
+  },
+  "author": "Praveenkumar Rajendran",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "express": "^4.16.4",
+    "mocha": "^6.0.2",
+    "request": "^2.88.0"
+  }
+}
