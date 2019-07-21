@@ -113,7 +113,9 @@ definitions:
     properties:
       id:
         type: "string"
-      name:
+      fisrtName:
+        type: "string"
+      lastName:
         type: "string"
       workingDays:
         type: "array"
@@ -152,7 +154,7 @@ definitions:
         type: "string" 
       patientId:
         type: "string"        
-      due:
+      at:
         type: "string"
         format: "date-time"
       status:
