@@ -1,12 +1,9 @@
 import config from 'config';
 import amqp from 'amqplib';
-import fs from 'fs';
 import path from 'path';
 import EventEmitter from 'events';
-import { promisify } from 'util';
 
 const eventEmitter = new EventEmitter();
-const readdir = promisify(fs.readdir);
 
 /**
  * load rabbitmq
@@ -17,19 +14,7 @@ export default async (dir, apis) => {
     const channel = await connection.createChannel();
     global.bus = channel;
     apis.forEach(async (api) => {
-      let events = require(`../apis/${api}/events`).default || [];
-      let files = [];
-      try {
-        files = await readdir(`${dir}/apis/${api}/consumers`);
-      } catch (err) {
-        console.error(err);
-      }
-
-      let consumers = files.filter(jsFiles);
-      consumers.forEach((consumer) => {
-        eventEmitter.on(`${path.basename(consumer, '.js')}`, require(`../apis/${api}/consumers/${consumer}`).default);
-      });
-
+      let events = require(`../apis/${api}/events`).default || [];      
       events.forEach(async (event) => {
         let eventName = `${api}:events:${event}`;
         channel.assertExchange(eventName, 'fanout', { durable: true });
