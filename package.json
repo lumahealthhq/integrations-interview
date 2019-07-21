@@ -1,0 +1,115 @@
+{
+  "name": "luma-api",
+  "version": "0.0.1",
+  "description": "luma-api",
+  "main": "app.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel src -d build --source-maps",
+    "build:ci": "./node_modules/.bin/babel src -d build",
+    "start:prod": "npm run build && pm2 start ./build/app.js",
+    "start": "npm run build && NODE_ENV=development node ./build/app"
+  },
+  "babel": {
+    "presets": [
+      "stage-0"
+    ],
+    "plugins": [
+      "check-es2015-constants",
+      "transform-es2015-arrow-functions",
+      "transform-es2015-block-scoped-functions",
+      "transform-es2015-block-scoping",
+      "transform-es2015-computed-properties",
+      "transform-es2015-destructuring",
+      "transform-es2015-duplicate-keys",
+      "transform-class-properties",
+      "transform-es2015-for-of",
+      "transform-es2015-function-name",
+      "transform-es2015-literals",
+      "transform-es2015-modules-commonjs",
+      "transform-es2015-object-super",
+      "transform-es2015-parameters",
+      "transform-es2015-shorthand-properties",
+      "transform-es2015-spread",
+      "transform-es2015-sticky-regex",
+      "transform-es2015-template-literals",
+      "transform-es2015-typeof-symbol",
+      "transform-es2015-unicode-regex",
+      "transform-async-to-generator",
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ],
+          "alias": {
+            "core": "./src/core",
+            "^(.+)/models/(.+)": "./src/apis/\\1/models/\\2",
+            "^(.+)/services/(.+)": "./src/apis/\\1/services/\\2",
+            "^(.+)/events": "./src/apis/\\1/events"
+          }
+        }
+      ]
+    ]
+  },
+  "author": "dilterporto",
+  "license": "MIT",
+  "dependencies": {
+    "@google/maps": "^0.5.5",
+    "amqplib": "^0.5.3",
+    "async": "^2.6.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.17.2",
+    "camelcase": "^4.1.0",
+    "camelcase-keys": "^4.2.0",
+    "config": "^3.0.1",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.15.3",
+    "express-promise-router": "^1.1.1",
+    "express-validator": "^5.0.3",
+    "flat": "^4.0.0",
+    "knex": "^0.13.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^5.0.11",
+    "morgan": "^1.8.2",
+    "pm2": "^3.2.4",
+    "swagger-ui-express": "^2.0.15",
+    "uuid": "^3.2.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/flat": "0.0.28",
+    "@types/lodash": "^4.14.116",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-check-es2015-constants": "^6.22.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.22.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.24.1",
+    "babel-plugin-transform-es2015-computed-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-duplicate-keys": "^6.24.1",
+    "babel-plugin-transform-es2015-for-of": "^6.23.0",
+    "babel-plugin-transform-es2015-function-name": "^6.24.1",
+    "babel-plugin-transform-es2015-literals": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "babel-plugin-transform-es2015-object-super": "^6.24.1",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-es2015-sticky-regex": "^6.24.1",
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "babel-plugin-transform-es2015-typeof-symbol": "^6.23.0",
+    "babel-plugin-transform-es2015-unicode-regex": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "standard": "^12.0.1",
+    "supertest": "^3.0.0"
+  }
+}
