@@ -12,7 +12,8 @@ const schema = new Schema({
   at: Date,
   status: {
     type: String,
-    enum: [ 'Scheduled', 'Canceled', 'Completed' ]
+    enum: [ 'Scheduled', 'Canceled', 'Completed' ],
+    default: 'Scheduled',
   },
   createdAt: {
     type: Date,

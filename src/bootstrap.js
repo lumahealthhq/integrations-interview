@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import series from 'async/series';
+import moment from "moment";
 
 import {
 
@@ -21,21 +22,23 @@ import {
 export default function (app, apis) {
   series([    
     // RabbitMQ
-    (next) => {
-      loadRabbitMQ(__dirname, apis)
-        .then(() => {
-          next(null);
-        })
-        .catch((reason) => {
-          next(new Error(reason));
-        });
-    },
+    // (next) => {
+    //   loadRabbitMQ(__dirname, apis)
+    //     .then(() => {
+    //       next(null);
+    //     })
+    //     .catch((reason) => {
+    //       next(new Error(reason));
+    //     });
+    // },
     // env variables & application insights
     (next) => {
       dotenv.config();
       if (process.env.NODE_ENV === 'development') {
         dotenv.config();
       }
+      // initialize momentjs
+      moment.locale('en-US');
       next(null);
     },
     // Error handling. The `ValidationError` instances thrown by objection.js have a `statusCode`

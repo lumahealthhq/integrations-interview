@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import moment from 'moment';
 
 const timeRangeSchema = new Schema({
   start: String,
@@ -9,15 +10,7 @@ const workingDaysSchema = new Schema({
   times: [timeRangeSchema],
   weekDay: {
     type: String,
-    enum: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ]
+    enum: moment.weekdays(),
   }
 }, { _id: false });
 

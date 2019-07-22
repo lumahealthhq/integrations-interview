@@ -7,8 +7,8 @@ import { Doctor } from '../models'
 export default function (router) {
   router.post('/doctors', async (req, res) => {
     try {
-      const { body } = req;
-      const doctor = await Doctor.create(body);
+      const { body: input } = req;
+      const doctor = await Doctor.create(input);
       return res
         .status(201)
         .json(doctor);

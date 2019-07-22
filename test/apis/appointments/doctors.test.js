@@ -3,7 +3,7 @@ const config = require('config');
 const mongoose = require('mongoose');
 const assert = require('assert');
 const app = require('../../../build/app'); 
-const DoctorSchema = require('../../../build/apis/appointments/models/Doctor');
+const DoctorSchema = require('../../../build/apis/appointments/models/Doctor').default;
 
 let instance = {};
 let db = {};
@@ -17,8 +17,8 @@ let doctorDocumentData = {
       weekDay: 'Monday',
       times: [
         {
-          start: '8:00AM',
-          end: '5:00PM'
+          start: '08:00AM',
+          end: '05:00PM'
         }
       ]
     },
@@ -26,8 +26,8 @@ let doctorDocumentData = {
       weekDay: 'Thursday',
       times: [
         {
-          start: '8:00AM',
-          end: '5:00PM'
+          start: '08:00AM',
+          end: '05:00PM'
         }
       ]
     }
@@ -40,6 +40,7 @@ before(function(done) {
     Doctor = db.model('Doctor', DoctorSchema);
     const document = new Doctor(doctorDocumentData);
     document.save(function() {
+      console.log(document);
       instance = document;
       done();
     });
@@ -121,8 +122,8 @@ describe('Create and update the list of doctor`s working hours', function() {
 
 });
 
-after(function(done) {
-  Doctor.deleteMany({}, function() {
-    done();
-  });
-});
+// after(function(done) {
+//   Doctor.deleteMany({}, function() {
+//     done();
+//   });
+// });

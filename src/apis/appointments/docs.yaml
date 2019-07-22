@@ -22,6 +22,15 @@ paths:
       summary: Create a patient
       description: Create a patient
       operationId: postPatient
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Create a patient"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/Patient"
       produces:
           - application/json
       responses:
@@ -38,6 +47,15 @@ paths:
       summary: Create a doctor
       description: Create a doctor
       operationId: postDoctor
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Create a doctor"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/Doctor"
       produces:
           - application/json
       responses:
@@ -153,10 +171,14 @@ definitions:
       doctorId:
         type: "string" 
       patientId:
-        type: "string"        
-      at:
         type: "string"
-        format: "date-time"
+      at:
+        type: "object"
+        properties:
+          date:
+            type: "string"
+          time:
+            type: "string"
       status:
         type: "string"
         description: "Appointment Status"
