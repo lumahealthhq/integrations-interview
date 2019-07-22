@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import db from '../';
 
 const schema = new mongoose.Schema({
   firstName: String,
@@ -11,4 +10,4 @@ const schema = new mongoose.Schema({
   }
 });
 
-export default db.model('Patient', schema);
+export default schema;

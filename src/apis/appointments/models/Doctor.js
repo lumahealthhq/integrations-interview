@@ -1,5 +1,4 @@
 import { Schema } from 'mongoose';
-import db from '../';
 
 const timeRangeSchema = new Schema({
   start: String,
@@ -33,4 +32,4 @@ const schema = new Schema({
   workingDays: workingDaysSchema,
 });
 
-export default db.model('Doctor', schema);
+export default schema;
