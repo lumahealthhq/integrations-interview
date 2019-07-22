@@ -23,4 +23,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
   console.log('Example app listening at port %s', server.address().port);
 });
 
-export default app;
+module.exports = app;

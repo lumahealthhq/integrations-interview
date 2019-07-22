@@ -1,0 +1,9 @@
+{
+  "rabbitmq": "amqp://admin:RiaDAMKG1SyU@localhost:5672",
+  "googleMaps": {
+    "apiKey": "AIzaSyCVSMHkfbbkvrSoDsATiRIAeXy4vTePpOo"
+  },
+  "appointments": {
+    "mongodb": "mongodb://localhost:27017/appointmentstestdb"
+  }
+}

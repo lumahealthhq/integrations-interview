@@ -7,7 +7,8 @@
     "build": "./node_modules/.bin/babel src -d build --source-maps",
     "build:ci": "./node_modules/.bin/babel src -d build",
     "start:prod": "npm run build && pm2 start ./build/app.js",
-    "start": "npm run build && NODE_ENV=development node ./build/app"
+    "start": "npm run build && NODE_ENV=development node ./build/app",
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha"
   },
   "babel": {
     "presets": [
@@ -70,6 +71,7 @@
     "flat": "^4.0.0",
     "knex": "^0.13.0",
     "lodash": "^4.17.4",
+    "mocha": "^6.2.0",
     "mongoose": "^5.0.11",
     "morgan": "^1.8.2",
     "pm2": "^3.2.4",
@@ -104,12 +106,13 @@
     "babel-plugin-transform-es2015-typeof-symbol": "^6.23.0",
     "babel-plugin-transform-es2015-unicode-regex": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.2.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "standard": "^12.0.1",
-    "supertest": "^3.0.0"
+    "supertest": "^3.4.2"
   }
 }
