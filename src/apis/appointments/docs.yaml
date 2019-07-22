@@ -78,7 +78,7 @@ paths:
         schema:
           type: "array"
           items:
-            $ref: "#/definitions/Appointment"
+            $ref: "#/definitions/WorkingDay"
       produces:
           - application/json
       responses:

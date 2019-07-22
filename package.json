@@ -8,7 +8,7 @@
     "build:ci": "./node_modules/.bin/babel src -d build",
     "start:prod": "npm run build && pm2 start ./build/app.js",
     "start": "npm run build && NODE_ENV=development node ./build/app",
-    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha"
+    "test": "npm run build && NODE_ENV=test ./node_modules/mocha/bin/mocha"
   },
   "babel": {
     "presets": [

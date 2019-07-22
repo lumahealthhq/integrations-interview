@@ -3,7 +3,7 @@ import { Schema } from 'mongoose';
 const timeRangeSchema = new Schema({
   start: String,
   end: String
-});
+}, { _id: false });
 
 const workingDaysSchema = new Schema({
   times: [timeRangeSchema],
@@ -19,7 +19,7 @@ const workingDaysSchema = new Schema({
       "Sunday"
     ]
   }
-});
+}, { _id: false });
 
 const schema = new Schema({
   firstName: String,
@@ -29,7 +29,7 @@ const schema = new Schema({
     type: Date,
     default: Date.now
   },
-  workingDays: workingDaysSchema,
+  workingDays: [workingDaysSchema],
 });
 
 export default schema;
