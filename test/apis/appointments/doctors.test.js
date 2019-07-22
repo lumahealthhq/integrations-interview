@@ -46,7 +46,7 @@ before(function(done) {
   });
 });
 
-describe('GET /doctors/:id', function() {
+describe('Find doctor`s working days by id ', function() {
 
   it('should get doctor by expected id', function(done) {
     request(app)
@@ -73,7 +73,7 @@ describe('GET /doctors/:id', function() {
 
 });
 
-describe('POST /doctors', function() {
+describe('Create doctor', function() {
 
   it('should create a doctor', function(done) {
     request(app)
@@ -93,7 +93,7 @@ describe('POST /doctors', function() {
 
 });
 
-describe('PATCH /doctors/:id/working-days', function() {
+describe('Create and update the list of doctor`s working hours', function() {
 
   it('should update a doctor`s working days', function(done) {
     request(app)
