@@ -15,3 +15,4 @@ build
 data
 *.ts
 typings.json
+.nyc_output
