@@ -1,128 +1,135 @@
 const request = require('supertest');
 const config = require('config');
 const mongoose = require('mongoose');
+const moment = require('moment');
 const assert = require('assert');
 const app = require('../../../build/app'); 
-const AppointmentSchema = require('../../../build/apis/appointments/models/Appointment');
 
-// let instance = {};
-// let db = {};
-// let Doctor = {};
+const DoctorSchema = require('../../../build/apis/appointments/models/Doctor').default;
+const PatientSchema = require('../../../build/apis/appointments/models/Patient').default;
+const AppointmentSchema = require('../../../build/apis/appointments/models/Appointment').default;
 
-// let doctorDocumentData = {
-//   firstName: 'FirstName',
-//   lastName: 'LastName',
-//   workingDays: [
-//     { 
-//       weekDay: 'Monday',
-//       times: [
-//         {
-//           start: '8:00AM',
-//           end: '5:00PM'
-//         }
-//       ]
-//     },
-//     { 
-//       weekDay: 'Thursday',
-//       times: [
-//         {
-//           start: '8:00AM',
-//           end: '5:00PM'
-//         }
-//       ]
-//     }
-//   ]
-// };
+let doctorInstance = {};
+let patientInstance = {};
+let db = {};
+let Doctor = {};
+let Patient = {};
+let Appointment = {};
 
-// before(function(done) {
-//   db = mongoose.createConnection(config.get('appointments.mongodb'));
-//   db.once('open', function() {
-//     Doctor = db.model('Doctor', AppointmentSchema);
-//     const document = new Doctor(doctorDocumentData);
-//     document.save(function() {
-//       instance = document;
-//       done();
-//     });
-//   });
-// });
+const doctorDocumentData = {
+  "fisrtName": "Fistname",
+  "lastName": "Lastname",
+  "workingDays": [
+    {
+      "weekDay": "Monday",
+      "times": [
+        {
+          "start": "10:00AM",
+          "end": "05:00PM"
+        }
+      ]
+    }
+  ]
+};
 
-// describe('GET /doctors/:id', function() {
+const patientDocumentData = {
+  "firstName": "Patient",
+  "lastName": "Fake",
+  "email": "patient@email.com"
+};
 
-//   it('should get doctor by expected id', function(done) {
-//     request(app)
-//       .get(`/appointments/api/doctors/${instance._id}`)
-//       .set('Accept', 'application/json')
-//       .expect('Content-Type', /json/)
-//       .end(function(err, res) {
-//         const { body } = res;
-//         assert.equal(body._id, instance._id, `doctor id`);
-//         assert.equal(body.firstName, instance.firstName, `doctor firstName`);
-//         assert.equal(body.lastName, instance.lastName, `doctor firstName`);
-//         return done();
-//       });
-//   });
+before(function(done) {
+  db = mongoose.createConnection(config.get('appointments.mongodb'));
+  db.once('open', function() {
 
-//   it('should not get doctor with wrong id', function(done) {
-//     const wrongDoctorId = '5d353713548cc76cf9923c99';
-//     request(app)
-//       .get(`/appointments/api/doctors/${wrongDoctorId}`)
-//       .set('Accept', 'application/json')
-//       .expect('Content-Type', /json/)
-//       .expect(404, done);
-//   });
+    Doctor = db.model('Doctor', DoctorSchema);
+    Patient = db.model('Patient', PatientSchema);
+    Appointment = db.model('Appointment', AppointmentSchema);
 
-// });
+    const saveDoctorPromise = new Promise(function(resolve, reject) {
+      const doctorDocument = new Doctor(doctorDocumentData);
+      doctorDocument.save(function(err) {
+        if (err) {
+          reject(err);
+        }
+        resolve(doctorDocument);
+      })
+    });
+    const savePatientPromise = new Promise(function(resolve, reject) {
+      const patientDocument = new Patient(patientDocumentData);
+      patientDocument.save(function(err) {
+        if (err) {
+          reject(err);
+        }
+        resolve(patientDocument);
+      })
+    });
 
-// describe('POST /doctors', function() {
+    Promise.all([
+      saveDoctorPromise,
+      savePatientPromise,
+    ]).then(function(values) {
+      doctorInstance = values[0];
+      patientInstance = values[1];
+      done();
+    });
+  });
+});
 
-//   it('should create a doctor', function(done) {
-//     request(app)
-//       .post('/appointments/api/doctors')
-//       .send(doctorDocumentData)
-//       .set('Accept', 'application/json')
-//       .expect('Content-Type', /json/)
-//       .expect(201)
-//       .end(function(err, res) {
-//         const { body: doctor } = res;
-//         assert.equal(doctor.firstName, doctorDocumentData.firstName, `doctor firstName`);
-//         assert.equal(doctor.lastName, doctorDocumentData.lastName, `doctor firstName`);
-//         assert.equal(2, doctor.workingDays.length);
-//         return done();
-//       });
-//   });
+describe('POST /appointments', function() {
 
-// });
+  it('should book an doctor opening', function(done) {
+    request(app)
+      .post('/appointments/api/appointments')
+      .send({
+        doctorId: doctorInstance._id,
+        patientId: patientInstance._id,
+        at: {
+          date: moment().day(8).format('YYYY-MM-DD'),
+          time: '11:00 AM'
+        }
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .end(function(err, res) {
+        const { body: appointment } = res;
+        assert.equal(appointment.status, 'Scheduled', `appointment status`);
+        assert.equal(appointment.doctorId, doctorInstance._id, `doctor id`);
+        assert.equal(appointment.patientId, patientInstance._id, `patient id`);
+        return done();
+      });
+  });
 
-// describe('Create and update the list of doctor`s working hours', function() {
+  it('should not book because doctor is busy', function(done) {
+    request(app)
+      .post('/appointments/api/appointments')
+      .send({
+        doctorId: doctorInstance._id,
+        patientId: patientInstance._id,
+        at: {
+          date: moment().day(8).format('YYYY-MM-DD'),
+          time: '11:00 AM'
+        }
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(422, done);
+  });
 
-//   it('should update a doctor`s working days', function(done) {
-//     request(app)
-//       .patch(`/appointments/api/doctors/${instance._id}/working-days`)
-//       .send([
-//         { 
-//           weekDay: 'Monday',
-//           times: [
-//             {
-//               start: '8:00AM',
-//               end: '5:00PM'
-//             }
-//           ]
-//         }
-//       ])
-//       .set('Accept', 'application/json')
-//       .expect('Content-Type', /json/)
-//       .end(function(err, res) {
-//         const { body: workingDays } = res;
-
-//         assert.equal(1, workingDays.length);
-//         done();
-//       });
-//   });
-
-// });
-
-// after(function(done) {
-//   Doctor.deleteMany({}, function() {
-//     done();
-//   });
-// });
+  it('should not book an doctor opening because there is no availaibility on day', function(done) {
+    request(app)
+      .post('/appointments/api/appointments')
+      .send({
+        doctorId: doctorInstance._id,
+        patientId: patientInstance._id,
+        at: {
+          date: moment().day(2).format('YYYY-MM-DD'),
+          time: '11:00 AM'
+        }
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(422, done);
+  });
+});

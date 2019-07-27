@@ -40,7 +40,6 @@ before(function(done) {
     Doctor = db.model('Doctor', DoctorSchema);
     const document = new Doctor(doctorDocumentData);
     document.save(function() {
-      console.log(document);
       instance = document;
       done();
     });
